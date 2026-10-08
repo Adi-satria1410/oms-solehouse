@@ -5,6 +5,8 @@ export default function RouteEffects() {
   const { pathname, search } = useLocation()
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [pathname])
+  useEffect(() => {
     const heading = document.querySelector('h1')
     document.title = `${heading?.textContent ?? 'Artisanal Footwear'} — SOLEHOUSE`
   }, [pathname, search])

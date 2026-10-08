@@ -21,12 +21,18 @@ export type Product = {
   rating: number
   reviewCount: number
   variants: Variant[]
+  collection: 'pria' | 'wanita' | 'anak'
+  images: { src: string; alt: string }[]
+  description: string
+  construction: string
+  releasedAt: string
 }
 
 export type Variant = {
   id: string
   sku: string
   colorName: string
+  color: 'krem' | 'coklat' | 'hitam' | 'taupe' | 'olive'
   stock: Record<number, number>
 }
 

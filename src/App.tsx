@@ -4,6 +4,9 @@ import StoreLayout from './layouts/StoreLayout'
 import AdminLayout from './layouts/AdminLayout'
 import PlaceholderPage from './pages/PlaceholderPage'
 import CatalogPage from './pages/store/CatalogPage'
+import HomePage from './pages/store/HomePage'
+import ProductDetailPage from './pages/store/ProductDetailPage'
+import WishlistPage from './pages/store/WishlistPage'
 import LoginPage from './pages/admin/LoginPage'
 import NotFoundPage from './pages/NotFoundPage'
 import RouteEffects from './components/ui/RouteEffects'
@@ -15,14 +18,14 @@ export default function App() {
       <RouteEffects />
       <Routes>
         <Route element={<StoreLayout />}>
-          <Route index element={<PlaceholderPage title="Beranda" description="Langkah tepat setiap hari. Koleksi sepatu artisan SOLEHOUSE sedang disiapkan untuk Anda." icon="storefront" action={{ to: '/katalog', label: 'Jelajahi katalog' }} />} />
+          <Route index element={<HomePage />} />
           <Route path="katalog" element={<CatalogPage />} />
-          <Route path="produk/:slug" element={<PlaceholderPage title="Detail Produk" description="Foto, pilihan warna, dan ukuran produk akan tersedia di sini." icon="steps" />} />
+          <Route path="produk/:slug" element={<ProductDetailPage />} />
           <Route path="keranjang" element={<PlaceholderPage title="Keranjang Belanja" description="Pilihan sepatu Anda akan tersimpan di sini." icon="shopping_bag" action={{ to: '/katalog', label: 'Lihat katalog' }} />} />
           <Route path="checkout" element={<PlaceholderPage title="Checkout" description="Alamat pengiriman dan ringkasan belanja akan tersedia di sini." icon="lock" />} />
           <Route path="lacak" element={<PlaceholderPage title="Lacak Pesanan" description="Ikuti perjalanan pesanan Anda, dari studio hingga tiba di rumah." icon="local_shipping" />} />
           <Route path="lacak/:orderId" element={<PlaceholderPage title="Lacak Pesanan" description="Riwayat perjalanan pesanan akan ditampilkan di sini." icon="local_shipping" />} />
-          <Route path="wishlist" element={<PlaceholderPage title="Favorit Saya" description="Tempat menyimpan koleksi yang ingin Anda miliki." icon="favorite" />} />
+          <Route path="wishlist" element={<WishlistPage />} />
           <Route path="akun" element={<PlaceholderPage title="Akun Saya" description="Informasi akun dan riwayat belanja akan tersedia di sini." icon="person" />} />
           {helpPages.map(page => <Route key={page.path} path={page.path} element={<PlaceholderPage title={page.title} description="Informasi lengkap sedang disiapkan oleh tim SOLEHOUSE." icon="help" />} />)}
           <Route path="*" element={<NotFoundPage />} />
