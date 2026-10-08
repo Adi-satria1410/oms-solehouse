@@ -98,6 +98,21 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.navigation-drawer:not([open]) { display: none; }
+
+.skip-link {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 60;
+  transform: translateY(-200%);
+  border-radius: var(--radius-pill);
+  background: var(--color-ink);
+  color: var(--color-surface);
+  padding: 0.75rem 1.5rem;
+}
+.skip-link:focus { transform: translateY(0); }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after {

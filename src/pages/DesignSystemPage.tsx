@@ -3,6 +3,7 @@ import Button, { type ButtonVariant } from '../components/ui/Button'
 import Icon from '../components/ui/Icon'
 import SpecimenSection from '../components/ui/SpecimenSection'
 import { formatRupiah, formatTanggal } from '../lib/format'
+import Brand from '../components/ui/Brand'
 
 const palette = [
   { token: 'base', name: 'Krem hangat', color: 'bg-base' },
@@ -55,13 +56,7 @@ export default function DesignSystemPage() {
       </a>
       <header className="sticky top-0 z-20 border-b border-line bg-base/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-x-6 gap-y-3 px-margin-mobile py-5 md:px-margin">
-          <a href="#konten" aria-label="SOLEHOUSE, awal panduan visual" className="flex items-center gap-3">
-            <span className="flex size-10 items-center justify-center rounded-full border border-taupe font-serif text-xl">S</span>
-            <span>
-              <span className="block font-serif text-headline-sm leading-none tracking-tight">SOLEHOUSE</span>
-              <span className="mt-1.5 block text-[9px] font-medium uppercase tracking-[0.22em] text-ink-2">Sepatu Artisan</span>
-            </span>
-          </a>
+          <Brand />
           <nav aria-label="Bagian panduan visual" className="flex gap-5 text-caption font-medium text-ink-2 max-sm:w-full max-sm:justify-between">
             <a href="#warna" className="inline-flex min-h-11 items-center hover:text-accent-hover">Warna</a>
             <a href="#tipografi" className="inline-flex min-h-11 items-center hover:text-accent-hover">Tipografi</a>
