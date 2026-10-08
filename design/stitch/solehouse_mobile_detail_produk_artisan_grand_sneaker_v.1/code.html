@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_stack" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "primary-fixed": "#f0dfd9", "on-error": "#ffffff", "tertiary": "#0f1506", "bg-taupe": "#B9AB9A", "inverse-surface": "#32302c", "border-subtle": "#E3D8CA", "on-tertiary-fixed-variant": "#424935", "ink-muted": "#9A8D83", "accent-hover": "#9A5430", "tertiary-fixed-dim": "#c1caaf", "surface-bright": "#fef9f2", "surface-variant": "#e7e2db", "on-background": "#1d1b17", "surface-container-low": "#f8f3ec", "on-secondary-container": "#76340c", "bg-surface": "#FFFFFF", "tertiary-fixed": "#dee6ca", "inverse-primary": "#d3c3bd", "bg-sand": "#E8DDCF", "on-error-container": "#93000a", "on-secondary": "#ffffff", "primary": "#19120e", "secondary-container": "#fc9f6f", "secondary-fixed-dim": "#ffb692", "surface": "#fef9f2", "surface-container": "#f2ede6", "on-primary": "#ffffff", "on-primary-container": "#9a8c87", "tertiary-container": "#232a18", "on-tertiary": "#ffffff", "on-surface": "#1d1b17", "on-tertiary-container": "#8a927a", "outline": "#807570", "on-secondary-fixed-variant": "#75340b", "inverse-on-surface": "#f5f0e9", "on-secondary-fixed": "#341100", "bg-base": "#F6F1EA", "surface-dim": "#ded9d3", "error": "#ba1a1a", "background": "#fef9f2", "primary-container": "#2f2622", "secondary": "#934a22", "on-primary-fixed": "#221a16", "on-tertiary-fixed": "#171e0d", "outline-variant": "#d1c4be", "badge-olive": "#5E6650", "surface-container-highest": "#e7e2db", "primary-fixed-dim": "#d3c3bd", "error-container": "#ffdad6", "ink-primary": "#2F2622", "on-surface-variant": "#4e4541", "ink-secondary": "#6B5E55", "on-primary-fixed-variant": "#4f4540", "surface-container-lowest": "#ffffff", "surface-tint": "#685c57", "secondary-fixed": "#ffdbcb", "surface-container-high": "#ece7e1" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "gutter-mobile": "1rem", "space-xl": "2.5rem", "gutter": "1.5rem", "margin": "3rem", "space-lg": "1.5rem", "margin-mobile": "1.25rem", "space-sm": "0.5rem", "space-md": "1rem", "space-xs": "0.25rem" }, fontFamily: { "headline-sm": ["Playfair Display"], "title-sm": ["Inter"], "display-lg": ["Playfair Display"], "headline-md": ["Playfair Display"], "display-lg-mobile": ["Playfair Display"], "label-md": ["Inter"], "body-sm": ["Inter"], "headline-lg-mobile": ["Playfair Display"], "title-md": ["Inter"], "body-lg": ["Inter"], "headline-lg": ["Playfair Display"], "body-md": ["Inter"], "label-sm": ["Inter"] }, fontSize: { "headline-sm": ["22px", { lineHeight: "30px", fontWeight: "500" }], "title-sm": ["16px", { lineHeight: "24px", fontWeight: "600" }], "display-lg": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "600" }], "headline-md": ["28px", { lineHeight: "36px", fontWeight: "500" }], "display-lg-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "600" }], "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.04em", fontWeight: "600" }], "body-sm": ["13px", { lineHeight: "18px", fontWeight: "400" }], "headline-lg-mobile": ["28px", { lineHeight: "36px", fontWeight: "500" }], "title-md": ["18px", { lineHeight: "26px", fontWeight: "600" }], "body-lg": ["16px", { lineHeight: "26px", fontWeight: "400" }], "headline-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.01em", fontWeight: "500" }], "body-md": ["14px", { lineHeight: "22px", fontWeight: "400" }], "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.05em", fontWeight: "500" }] } } } }</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 350,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-bg-base font-body-md text-ink-primary min-h-screen flex flex-col antialiased selection:bg-secondary-fixed selection:text-ink-primary"><header class="fixed top-0 inset-x-0 z-50 bg-bg-base/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(47,38,34,0.04)] pt-safe"><div class="h-16 px-gutter-mobile flex items-center justify-between"><button aria-label="Kembali" class="w-11 h-11 flex items-center justify-center rounded-full text-ink-primary hover:bg-bg-sand/60 transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[22px]">arrow_back</span></button><h1 class="font-headline-sm text-headline-sm text-ink-primary truncate max-w-[200px] text-center tracking-tight">Detail Produk</h1><div class="flex items-center gap-space-xs"><button aria-label="Bagikan" class="w-11 h-11 flex items-center justify-center rounded-full text-ink-primary hover:bg-bg-sand/60 transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">share</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs shadow-[0_2px_6px_rgba(47,38,34,0.15)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-safe bg-bg-base"><div class="flex flex-col w-full pb-28">
+<!-- Sub-Header Status Row -->
+<div class="px-gutter-mobile py-space-sm flex items-center justify-between bg-surface-container-low">
+<div class="flex items-center gap-space-xs text-ink-muted">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-secondary">Atelier Bandung • Buatan Tangan</span>
+</div>
+<button aria-label="Simpan ke daftar keinginan" class="flex items-center gap-1 font-label-sm text-label-sm text-ink-secondary hover:text-secondary transition-colors" id="wishlist-btn" onclick="toggleWishlist()" type="button">
+<span class="material-symbols-outlined text-[18px]" id="wishlist-icon">favorite</span>
+<span id="wishlist-label">Simpan</span>
+</button>
+</div>
+<!-- Hero Product Gallery Carousel -->
+<section aria-label="Galeri Foto Produk" class="relative w-full bg-bg-sand flex flex-col overflow-hidden">
+<div class="relative w-full aspect-[4/4.5] flex items-center justify-center overflow-hidden">
+<!-- Active Hero Image -->
+<img alt="Artisan Grand Sneaker V.1 Ochre Tan" class="w-full h-full object-cover transition-opacity duration-300" data-alt="High-end editorial studio photograph of the Artisan Grand Sneaker V.1 in Ochre Tan full-grain calfskin leather, 3/4 perspective angle resting gracefully on warm natural sandstone plinth. Warm soft directional daylight, subtle tactile stitching shadows, bespoke Blake-Rapid welt detail visible, premium craftsmanship luxury aesthetic with earthy ivory and sand tones." id="main-product-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7EXV1s2z0JS1pWMCVvq-299FnaWfmeLmvd2u6M9O4dBLV3IaSsgmRAT7ZYr40FwzvAid8wY4RkkUwFnGRU_tXyvn-uEdz50ZFyMHyKhZcES9h3VkMISmNkj-ADkl8S7jd3mOAGcZ2sZzKqkaRcEbN1lrrx9iWuWRiL1iu7eQwDxhiYwNTw_f3AGdNlBi2NPtydaSmDDb8BMWFksc2EOri6ZFI_dW8mfb6QdmP3xne"/>
+<!-- Atelier Badges Floating -->
+<div class="absolute top-4 left-4 flex flex-col gap-1.5 items-start pointer-events-none">
+<span class="bg-badge-olive text-on-tertiary font-label-sm text-label-sm px-2.5 py-1 rounded-full shadow-sm tracking-wide">
+          Hand-Lasted Atelier
+        </span>
+<span class="bg-primary/80 backdrop-blur-md text-on-primary font-label-sm text-label-sm px-2.5 py-1 rounded-full shadow-sm">
+          Blake-Rapid Stitch
+        </span>
+</div>
+<!-- Quick Zoom Cue -->
+<div class="absolute bottom-4 right-4 bg-surface/80 backdrop-blur-md text-ink-primary px-2 py-1 rounded-full flex items-center gap-1 font-label-sm text-label-sm shadow-sm pointer-events-none">
+<span class="material-symbols-outlined text-[14px]">zoom_in</span>
+<span>Perbesar</span>
+</div>
+</div>
+<!-- Gallery Thumbnail Selectors -->
+<div class="px-gutter-mobile py-space-sm bg-surface-container flex items-center justify-between gap-2 overflow-x-auto">
+<button aria-label="Lihat Sudut Utama" class="gallery-thumb flex-1 min-w-[90px] py-2 px-2 bg-surface rounded-lg shadow-sm flex flex-col items-center gap-1 text-center transition-all duration-200" onclick="switchGallery(0, this)" type="button">
+<span class="font-label-sm text-label-sm text-ink-primary font-semibold truncate w-full">Sudut Utama</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</button>
+<button aria-label="Lihat Detail Sol" class="gallery-thumb flex-1 min-w-[90px] py-2 px-2 bg-surface/60 rounded-lg flex flex-col items-center gap-1 text-center transition-all duration-200 opacity-70 hover:opacity-100" onclick="switchGallery(1, this)" type="button">
+<span class="font-label-sm text-label-sm text-ink-secondary truncate w-full">Detail Jahitan Sol</span>
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+</button>
+<button aria-label="Lihat Bagian Dalam" class="gallery-thumb flex-1 min-w-[90px] py-2 px-2 bg-surface/60 rounded-lg flex flex-col items-center gap-1 text-center transition-all duration-200 opacity-70 hover:opacity-100" onclick="switchGallery(2, this)" type="button">
+<span class="font-label-sm text-label-sm text-ink-secondary truncate w-full">Bagian Dalam Kulit</span>
+<span class="w-1.5 h-1.5 rounded-full bg-transparent"></span>
+</button>
+</div>
+</section>
+<!-- Product Header & Pricing Section -->
+<section class="px-gutter-mobile pt-space-lg pb-space-md flex flex-col bg-surface shadow-sm">
+<!-- Eyebrow -->
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">Seri Signature • Kulit Nabati</span>
+<span class="w-1 h-1 rounded-full bg-ink-muted"></span>
+<span class="font-label-sm text-label-sm text-ink-muted">Ref. AGS-01-TAN</span>
+</div>
+<!-- Product Title -->
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-ink-primary font-serif tracking-tight leading-snug">
+      Artisan Grand Sneaker V.1
+    </h2>
+<!-- Social Proof Ratings -->
+<div class="mt-2 flex items-center gap-2 flex-wrap">
+<div class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-title-sm text-title-sm text-ink-primary font-bold">4.9</span>
+</div>
+<span class="text-ink-muted font-body-sm text-body-sm">(128 Ulasan Pengrajin)</span>
+<span class="w-1 h-1 rounded-full bg-ink-muted"></span>
+<div class="flex items-center gap-1 text-ink-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[15px] text-badge-olive">local_shipping</span>
+<span>Terjual 340+ pasang</span>
+</div>
+</div>
+<!-- Price Section -->
+<div class="mt-4 p-3 bg-surface-container rounded-xl flex items-baseline justify-between">
+<div class="flex items-baseline gap-2.5">
+<span class="font-title-md text-title-md text-ink-primary font-bold tracking-tight">Rp 1.490.000</span>
+<span class="font-body-sm text-body-sm text-ink-muted line-through">Rp 1.860.000</span>
+</div>
+<span class="bg-secondary text-on-secondary font-label-sm text-label-sm font-semibold px-2.5 py-0.5 rounded-full shadow-xs">
+        Hemat 20%
+      </span>
+</div>
+</section>
+<!-- Color Variant Selector -->
+<section class="mt-3 px-gutter-mobile py-space-md bg-surface shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-title-sm text-title-sm text-ink-primary">Pilihan Warna</span>
+<span class="font-label-md text-label-md text-secondary font-semibold" id="active-color-name">Ochre Tan &amp; Welt</span>
+</div>
+<div class="flex items-center gap-3">
+<!-- Ochre Tan (Active) -->
+<button aria-label="Warna Ochre Tan" class="color-btn relative w-11 h-11 rounded-full bg-[#B5653A] flex items-center justify-center shadow-md shadow-secondary/20 transition-transform active:scale-95" onclick="selectColor('Ochre Tan &amp; Welt', this)" type="button">
+<span class="color-indicator w-4 h-4 rounded-full bg-surface shadow-xs"></span>
+</button>
+<!-- Espresso Brown -->
+<button aria-label="Warna Espresso Brown" class="color-btn relative w-11 h-11 rounded-full bg-[#3A2820] flex items-center justify-center shadow-sm transition-transform active:scale-95" onclick="selectColor('Espresso Brown', this)" type="button">
+<span class="color-indicator hidden w-4 h-4 rounded-full bg-surface shadow-xs"></span>
+</button>
+<!-- Sand Taupe -->
+<button aria-label="Warna Sand Taupe" class="color-btn relative w-11 h-11 rounded-full bg-[#B9AB9A] flex items-center justify-center shadow-sm transition-transform active:scale-95" onclick="selectColor('Sand Taupe', this)" type="button">
+<span class="color-indicator hidden w-4 h-4 rounded-full bg-surface shadow-xs"></span>
+</button>
+<!-- Off-White Raw -->
+<button aria-label="Warna Off-White Raw" class="color-btn relative w-11 h-11 rounded-full bg-[#E8DDCF] flex items-center justify-center shadow-sm transition-transform active:scale-95" onclick="selectColor('Off-White Raw Vachetta', this)" type="button">
+<span class="color-indicator hidden w-4 h-4 rounded-full bg-surface shadow-xs"></span>
+</button>
+</div>
+</section>
+<!-- Footwear Size Selector -->
+<section class="mt-3 px-gutter-mobile py-space-md bg-surface shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-title-sm text-title-sm text-ink-primary">Pilih Ukuran (EU)</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Pria</span>
+</div>
+<button aria-label="Buka Panduan Ukuran" class="flex items-center gap-1 font-label-md text-label-md text-secondary hover:text-accent-hover font-semibold transition-colors" onclick="openSizeGuideModal()" type="button">
+<span class="material-symbols-outlined text-[16px]">straighten</span>
+<span>Panduan Ukuran</span>
+</button>
+</div>
+<!-- Size Chips Grid / Wrap -->
+<div class="grid grid-cols-4 gap-2.5">
+<!-- EU 38 -->
+<button class="size-btn py-3 px-2 rounded-xl bg-surface-container flex flex-col items-center justify-center text-center transition-all hover:bg-surface-variant active:scale-95" onclick="selectSize('38', this)" type="button">
+<span class="font-title-sm text-title-sm text-ink-primary font-semibold">38</span>
+<span class="font-label-sm text-label-sm text-ink-muted mt-0.5">Tersedia</span>
+</button>
+<!-- EU 39 -->
+<button class="size-btn py-3 px-2 rounded-xl bg-surface-container flex flex-col items-center justify-center text-center transition-all hover:bg-surface-variant active:scale-95" onclick="selectSize('39', this)" type="button">
+<span class="font-title-sm text-title-sm text-ink-primary font-semibold">39</span>
+<span class="font-label-sm text-label-sm text-ink-muted mt-0.5">Tersedia</span>
+</button>
+<!-- EU 40 -->
+<button class="size-btn py-3 px-2 rounded-xl bg-surface-container flex flex-col items-center justify-center text-center transition-all hover:bg-surface-variant active:scale-95" onclick="selectSize('40', this)" type="button">
+<span class="font-title-sm text-title-sm text-ink-primary font-semibold">40</span>
+<span class="font-label-sm text-label-sm text-ink-muted mt-0.5">Tersedia</span>
+</button>
+<!-- EU 41 (Active Selection + Low Stock) -->
+<button class="size-btn active-size py-3 px-2 rounded-xl bg-primary text-on-primary flex flex-col items-center justify-center text-center shadow-md transition-all active:scale-95" onclick="selectSize('41', this)" type="button">
+<span class="font-title-sm text-title-sm text-on-primary font-bold">41</span>
+<span class="font-label-sm text-label-sm text-secondary-fixed mt-0.5 font-medium">Sisa 2!</span>
+</button>
+<!-- EU 42 (Low Stock 1) -->
+<button class="size-btn py-3 px-2 rounded-xl bg-surface-container flex flex-col items-center justify-center text-center transition-all hover:bg-surface-variant active:scale-95" onclick="selectSize('42', this)" type="button">
+<span class="font-title-sm text-title-sm text-ink-primary font-semibold">42</span>
+<span class="font-label-sm text-label-sm text-secondary mt-0.5 font-medium">Sisa 1</span>
+</button>
+<!-- EU 43 -->
+<button class="size-btn py-3 px-2 rounded-xl bg-surface-container flex flex-col items-center justify-center text-center transition-all hover:bg-surface-variant active:scale-95" onclick="selectSize('43', this)" type="button">
+<span class="font-title-sm text-title-sm text-ink-primary font-semibold">43</span>
+<span class="font-label-sm text-label-sm text-ink-muted mt-0.5">Tersedia</span>
+</button>
+<!-- EU 44 -->
+<button class="size-btn py-3 px-2 rounded-xl bg-surface-container flex flex-col items-center justify-center text-center transition-all hover:bg-surface-variant active:scale-95" onclick="selectSize('44', this)" type="button">
+<span class="font-title-sm text-title-sm text-ink-primary font-semibold">44</span>
+<span class="font-label-sm text-label-sm text-ink-muted mt-0.5">Tersedia</span>
+</button>
+<!-- EU 45 (Out of Stock / Disabled) -->
+<button aria-label="Ukuran 45 Habis" class="py-3 px-2 rounded-xl bg-surface-container-high opacity-50 cursor-not-allowed flex flex-col items-center justify-center text-center relative overflow-hidden" disabled="" type="button">
+<span class="font-title-sm text-title-sm text-ink-muted line-through font-normal">45</span>
+<span class="font-label-sm text-label-sm text-ink-muted mt-0.5">Habis</span>
+</button>
+</div>
+<!-- Editorial Fitting Microcopy -->
+<div class="mt-1 p-3 bg-surface-container-low rounded-xl flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-ink-secondary">
+<strong class="text-ink-primary font-medium">Panduan Fitting:</strong> Potongan pas reguler (True to Size). Jika ragu antara 2 ukuran, kami sarankan memilih 1 nomor lebih besar untuk kenyamanan sol kulit.
+      </p>
+</div>
+</section>
+<!-- Bespoke Craft Story Visual Card -->
+<section class="mt-3 px-gutter-mobile py-space-md bg-surface shadow-sm flex flex-col">
+<div class="rounded-xl overflow-hidden relative aspect-[16/9] mb-3">
+<img alt="Proses Kriya Sepatu Tradisional" class="w-full h-full object-cover" data-alt="Intimate artisan workshop detail photograph of a master cordwainer cobbler hands carefully stitching full grain calfskin leather footwear upper to the insole with traditional wax thread. Natural timber workbench with antique shoemaking brass tools, warm ambient lamplight, bespoke shoemaking luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCv4R96cqfXr-k-soTog4YhzJVNo9RDfCj6OwFVh-iAzzIG0jEygwy1vFHC2lv3DMGiEltoWo8ZALwrL2FlJ3-auISoi8yyBnukj9xtpwaNFlJVS-BWCOKMlpHN3CCTd5yRm1lh9OehfT0NcF34Rk9aSR76FF5J5HnQ0Ju-mzVe-EbBYH9PS6ACz_GGs40pEbqnCle-2BKWeI3ccUNgsgPD2Vj26fX2Opoux07THns5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent flex items-end p-4">
+<div>
+<span class="text-secondary-fixed font-label-sm text-label-sm uppercase font-semibold">Dibuat Dengan Waktu</span>
+<p class="text-on-primary font-headline-sm text-headline-sm font-serif">14 Jam Kriya Presisi Per Pasang</p>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-ink-secondary leading-relaxed">
+      Setiap pasang seri Grand Sneaker dirakit secara manual oleh pengrajin generasi ketiga di bengkel kriya kami di Bandung Timur. Jahitan Blake-Rapid ganda menjamin ketahanan sol hingga dapat diganti kembali (resolable).
+    </p>
+</section>
+<!-- Product Details Accordion Section -->
+<section class="mt-3 px-gutter-mobile py-space-md bg-surface shadow-sm flex flex-col gap-2">
+<span class="font-title-sm text-title-sm text-ink-primary mb-1">Spesifikasi Kriya &amp; Kebijakan</span>
+<!-- Accordion Item 1 -->
+<div class="bg-surface-container rounded-xl overflow-hidden">
+<button aria-expanded="true" class="w-full p-4 flex items-center justify-between text-left" onclick="toggleAccordion('acc-1', this)" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">layers</span>
+<span class="font-title-sm text-title-sm text-ink-primary">Deskripsi &amp; Material Pilihan</span>
+</div>
+<span class="accordion-icon material-symbols-outlined text-ink-muted text-[20px] transition-transform duration-200 rotate-180">expand_more</span>
+</button>
+<div class="accordion-content px-4 pb-4 flex flex-col gap-2.5" id="acc-1">
+<div class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0"></span>
+<p class="font-body-sm text-body-sm text-ink-secondary"><strong class="text-ink-primary">Upper Kulit:</strong> Premium Italian Calfskin Full-Grain berminyak alami dengan kemampuan patina semakin anggun seiring pemakaian.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0"></span>
+<p class="font-body-sm text-body-sm text-ink-secondary"><strong class="text-ink-primary">Lapisan Dalam (Lining):</strong> Full Lambskin Nappa ekstra halus, memberikan sirkulasi udara optimal dan mencegah lecet tanpa kaos kaki.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0"></span>
+<p class="font-body-sm text-body-sm text-ink-secondary"><strong class="text-ink-primary">Insole &amp; Sol Luar:</strong> OrthoLite Hybrid dilapisi kulit domba nabati berpasangan dengan outsole Margom Rubber daur ulang Italia berdaya cengkeram tinggi.</p>
+</div>
+</div>
+</div>
+<!-- Accordion Item 2 -->
+<div class="bg-surface-container rounded-xl overflow-hidden">
+<button aria-expanded="false" class="w-full p-4 flex items-center justify-between text-left" onclick="toggleAccordion('acc-2', this)" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">spa</span>
+<span class="font-title-sm text-title-sm text-ink-primary">Material &amp; Perawatan Patina</span>
+</div>
+<span class="accordion-icon material-symbols-outlined text-ink-muted text-[20px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="accordion-content hidden px-4 pb-4 flex flex-col gap-2" id="acc-2">
+<p class="font-body-sm text-body-sm text-ink-secondary">
+          Bersihkan debu kering dengan sikat bulu kuda (horsehair brush) halus. Gunakan leather balm berbahan dasar beeswax alami setiap 4–6 minggu untuk mengunci kelembapan kulit nabati dan menjaga kilau alami patina. Hindari pengeringan langsung di bawah sinar terik matahari.
+        </p>
+</div>
+</div>
+<!-- Accordion Item 3 -->
+<div class="bg-surface-container rounded-xl overflow-hidden">
+<button aria-expanded="false" class="w-full p-4 flex items-center justify-between text-left" onclick="toggleAccordion('acc-3', this)" type="button">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">workspace_premium</span>
+<span class="font-title-sm text-title-sm text-ink-primary">Garansi Kriya &amp; Retur 14 Hari</span>
+</div>
+<span class="accordion-icon material-symbols-outlined text-ink-muted text-[20px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="accordion-content hidden px-4 pb-4 flex flex-col gap-2" id="acc-3">
+<p class="font-body-sm text-body-sm text-ink-secondary">
+          Kami memberi garansi penjahitan sol &amp; keliman upper gratis selama 365 hari. Apabila ukuran kurang pas saat pertama kali diterima di rumah, Anda berhak melakukan penukaran ukuran bebas biaya kirim balik dalam kurun 14 hari kerja dengan kondisi sol belum digunakan berjalan di luar ruangan.
+        </p>
+</div>
+</div>
+</section>
+<!-- Editorial Recommendation Gallery 'Mungkin Kamu Suka' -->
+<section class="mt-4 px-gutter-mobile flex flex-col gap-3">
+<div class="flex items-baseline justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-secondary uppercase font-semibold">Koleksi Terkait</span>
+<h3 class="font-headline-sm text-headline-sm text-ink-primary font-serif">Mungkin Kamu Suka</h3>
+</div>
+<button class="font-label-md text-label-md text-secondary font-medium hover:underline" type="button">
+        Lihat Semua
+      </button>
+</div>
+<!-- 2-Column Product Cards -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Card 1 -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="relative w-full aspect-[4/4.5] bg-bg-sand">
+<img alt="Loafer Klasik Espresso" class="w-full h-full object-cover" data-alt="Artisanal penny loafer footwear handcrafted from dark espresso brown pull-up calfskin leather with subtle patina, clean sand studio background, soft warm shadow, minimalist luxury footwear styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbj2s4HSUz0tcTbn3phz78E4mTeedOdVUaRhcO5pGzUYBDGI-8fEPUHewSjOOorF6NE5NDqYEYodj31yjjPnyStfSYACiYe7Vz580VjBYco3bVKcIPlBmhX37UaWJTN1BJfNPRX4XrIvt_k4HdXGIuiPyWptzu0os45lg8xmtJ94y-vW7hmC-XB-FWt9ZEKVvi9isU-CFaXndbVLq7bDC-55gKxE-V-KBYXSXSm6F5"/>
+<span class="absolute top-2.5 left-2.5 bg-badge-olive text-on-tertiary font-label-sm text-label-sm px-2 py-0.5 rounded-full">
+            Kriya Baru
+          </span>
+</div>
+<div class="p-3 flex flex-col flex-1 justify-between gap-1.5">
+<div>
+<span class="font-label-sm text-label-sm text-ink-muted block uppercase">Kulit Nabati</span>
+<h4 class="font-title-sm text-title-sm text-ink-primary font-serif truncate">Loafer Penny Espresso</h4>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-label-md text-label-md text-ink-primary font-bold">Rp 1.620.000</span>
+<div class="flex items-center text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.9</span>
+</div>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="relative w-full aspect-[4/4.5] bg-bg-sand">
+<img alt="Court Sneaker Off-White" class="w-full h-full object-cover" data-alt="Handcrafted minimalist court sneaker in off-white natural roughout suede and full grain leather welt, resting on clean beige travertine stone, calm luxury warm lighting aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAftu6NtYf7HO1ejvDli9ILaKy9yz-rfui2vBy7_lmkXD1LqfdksCLK62mqjCRSR6uTOEnzT9zTRkA5YGzsRj0LxVkQrbjSE2Q7wAaEDd5Xf_LacUMqoM_66urMO0XgqehD3GzFqG75sng_jUs0XWWWHsDaoizvLEY8PswF79Zxmq9xvqpZool5brrXH6axhPwlgsPSqS7cGs8gqCkeBGnaVETNMtFBXBYbvfcBQg9p"/>
+<span class="absolute top-2.5 left-2.5 bg-secondary text-on-secondary font-label-sm text-label-sm px-2 py-0.5 rounded-full">
+            Terlaris
+          </span>
+</div>
+<div class="p-3 flex flex-col flex-1 justify-between gap-1.5">
+<div>
+<span class="font-label-sm text-label-sm text-ink-muted block uppercase">Roughout Suede</span>
+<h4 class="font-title-sm text-title-sm text-ink-primary font-serif truncate">Heritage Court V.2</h4>
+</div>
+<div class="flex items-center justify-between mt-1">
+<span class="font-label-md text-label-md text-ink-primary font-bold">Rp 1.390.000</span>
+<div class="flex items-center text-secondary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span>4.8</span>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Sticky Bottom Purchase Bar (Fixed above bottom safe-area) -->
+<aside class="fixed bottom-0 inset-x-0 z-40 bg-surface/95 backdrop-blur-xl shadow-[0_-4px_24px_rgba(47,38,34,0.1)] pb-safe">
+<div class="max-w-md mx-auto px-gutter-mobile py-2.5 flex items-center justify-between gap-3">
+<!-- Price & Current Selection Summary -->
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-ink-muted truncate">Total Pembayaran</span>
+<div class="flex items-baseline gap-1.5">
+<span class="font-title-md text-title-md text-ink-primary font-bold tracking-tight">Rp 1.490.000</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium truncate" id="sticky-selection-summary">
+          Ochre Tan • EU 41
+        </span>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 shrink-0">
+<!-- Advisor Chat Button -->
+<button aria-label="Konsultasi dengan Penasihat Ukuran via WhatsApp" class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-ink-primary hover:bg-surface-variant transition-colors shadow-sm" onclick="openAdvisorChat()" type="button">
+<span class="material-symbols-outlined text-[20px]">forum</span>
+</button>
+<!-- Primary Add to Cart CTA (terracotta) -->
+<button class="h-12 px-5 rounded-full bg-secondary text-on-secondary hover:bg-accent-hover active:scale-[0.98] font-title-sm text-title-sm font-semibold flex items-center justify-center gap-2 shadow-md shadow-secondary/30 transition-all min-w-[155px]" id="add-to-cart-btn" onclick="handleAddToCart()" type="button">
+<span class="material-symbols-outlined text-[19px]">shopping_bag</span>
+<span>+ Keranjang</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Size Guide Bottom Sheet Modal (Hidden by default) -->
+<div class="fixed inset-0 z-50 bg-primary/60 backdrop-blur-sm hidden items-end justify-center transition-opacity" id="size-guide-modal">
+<div class="bg-surface w-full max-w-md rounded-t-2xl p-gutter-mobile flex flex-col gap-4 shadow-2xl animate-in slide-in-from-bottom duration-300">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">straighten</span>
+<h3 class="font-title-md text-title-md text-ink-primary font-serif">Panduan Ukuran Sepatu</h3>
+</div>
+<button aria-label="Tutup panduan ukuran" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-ink-primary hover:bg-surface-variant" onclick="closeSizeGuideModal()" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-ink-secondary">
+        Ukur panjang telapak kaki dari ujung tumit hingga ujung jempol terpanjang di atas selembar kertas putih:
+      </p>
+<div class="bg-surface-container-low rounded-xl overflow-hidden">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container text-ink-primary font-semibold font-label-md text-label-md">
+<tr>
+<th class="py-2.5 px-3">EU</th>
+<th class="py-2.5 px-3">Panjang Kaki (cm)</th>
+<th class="py-2.5 px-3">US Pria</th>
+</tr>
+</thead>
+<tbody class="text-ink-secondary divide-y-0">
+<tr class="bg-surface/50"><td class="py-2 px-3 font-semibold text-ink-primary">40</td><td class="py-2 px-3">25.5 cm</td><td class="py-2 px-3">7.5</td></tr>
+<tr class="bg-surface"><td class="py-2 px-3 font-semibold text-secondary">41</td><td class="py-2 px-3">26.2 cm</td><td class="py-2 px-3">8.5</td></tr>
+<tr class="bg-surface/50"><td class="py-2 px-3 font-semibold text-ink-primary">42</td><td class="py-2 px-3">27.0 cm</td><td class="py-2 px-3">9.0</td></tr>
+<tr class="bg-surface"><td class="py-2 px-3 font-semibold text-ink-primary">43</td><td class="py-2 px-3">27.8 cm</td><td class="py-2 px-3">10.0</td></tr>
+<tr class="bg-surface/50"><td class="py-2 px-3 font-semibold text-ink-primary">44</td><td class="py-2 px-3">28.5 cm</td><td class="py-2 px-3">11.0</td></tr>
+</tbody>
+</table>
+</div>
+<button class="w-full h-11 rounded-full bg-primary text-on-primary font-title-sm text-title-sm font-medium" onclick="closeSizeGuideModal()" type="button">
+        Paham &amp; Kembali Memilih
+      </button>
+</div>
+</div>
+<!-- Toast Notification Container for Cart & Wishlist -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full shadow-lg font-label-md text-label-md flex items-center gap-2 opacity-0 pointer-events-none transition-all duration-300" id="toast-notification">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed" id="toast-icon">check_circle</span>
+<span id="toast-message">Produk ditambahkan ke keranjang</span>
+</div>
+</div>
+<script>
+  let currentSelection = {
+    color: 'Ochre Tan',
+    size: '41'
+  };
+
+  const galleryImages = [
+    {
+      alt: "High-end editorial studio photograph of the Artisan Grand Sneaker V.1 in Ochre Tan full-grain calfskin leather, 3/4 perspective angle resting gracefully on warm natural sandstone plinth. Warm soft directional daylight, subtle tactile stitching shadows, bespoke Blake-Rapid welt detail visible, premium craftsmanship luxury aesthetic with earthy ivory and sand tones."
+    },
+    {
+      alt: "Close-up macro detail of the Blake-Rapid stitch welt on Artisan Grand Sneaker V.1, showing precise waxed linen hand-stitching, rich vegetable-tanned leather sole layers, and Italian Margom recycled rubber grip. Warm artisanal lighting, extreme texture fidelity."
+    },
+    {
+      alt: "Interior perspective photograph of Artisan Grand Sneaker V.1 showing supple buttery lambskin Nappa lining, embossed artisan atelier brand stamp in gold foil, and cushioned OrthoLite footbed. Soft natural studio illumination, warm tones."
+    }
+  ];
+
+  function switchGallery(index, triggerBtn) {
+    const mainImg = document.getElementById('main-product-image');
+    mainImg.style.opacity = '0.3';
+    setTimeout(() => {
+      mainImg.setAttribute('data-alt', galleryImages[index].alt);
+      mainImg.style.opacity = '1';
+    }, 150);
+
+    const buttons = document.querySelectorAll('.gallery-thumb');
+    buttons.forEach((btn, i) => {
+      const dot = btn.querySelector('span:last-child');
+      const text = btn.querySelector('span:first-child');
+      if (i === index) {
+        btn.classList.remove('opacity-70', 'bg-surface/60');
+        btn.classList.add('bg-surface', 'shadow-sm');
+        text.classList.remove('text-ink-secondary');
+        text.classList.add('text-ink-primary', 'font-semibold');
+        dot.classList.remove('bg-transparent');
+        dot.classList.add('bg-secondary');
+      } else {
+        btn.classList.add('opacity-70', 'bg-surface/60');
+        btn.classList.remove('bg-surface', 'shadow-sm');
+        text.classList.add('text-ink-secondary');
+        text.classList.remove('text-ink-primary', 'font-semibold');
+        dot.classList.add('bg-transparent');
+        dot.classList.remove('bg-secondary');
+      }
+    });
+  }
+
+  function selectColor(colorName, btn) {
+    currentSelection.color = colorName;
+    document.getElementById('active-color-name').textContent = colorName;
+    updateStickySummary();
+
+    const buttons = document.querySelectorAll('.color-btn');
+    buttons.forEach(b => {
+      const dot = b.querySelector('.color-indicator');
+      if (b === btn) {
+        dot.classList.remove('hidden');
+        b.classList.add('shadow-md', 'shadow-secondary/20');
+      } else {
+        dot.classList.add('hidden');
+        b.classList.remove('shadow-md', 'shadow-secondary/20');
+      }
+    });
+
+    showToast('Warna diubah ke: ' + colorName, 'palette');
+  }
+
+  function selectSize(sizeNum, btn) {
+    currentSelection.size = sizeNum;
+    updateStickySummary();
+
+    const buttons = document.querySelectorAll('.size-btn');
+    buttons.forEach(b => {
+      const title = b.querySelector('span:first-child');
+      const sub = b.querySelector('span:last-child');
+      if (b === btn) {
+        b.classList.remove('bg-surface-container', 'text-ink-primary');
+        b.classList.add('bg-primary', 'text-on-primary', 'shadow-md');
+        title.classList.remove('text-ink-primary');
+        title.classList.add('text-on-primary', 'font-bold');
+        if (sub.textContent.includes('Sisa')) {
+          sub.className = 'font-label-sm text-label-sm text-secondary-fixed mt-0.5 font-medium';
+        } else {
+          sub.className = 'font-label-sm text-label-sm text-surface-variant mt-0.5 font-medium';
+        }
+      } else {
+        b.classList.add('bg-surface-container');
+        b.classList.remove('bg-primary', 'text-on-primary', 'shadow-md');
+        title.classList.add('text-ink-primary');
+        title.classList.remove('text-on-primary', 'font-bold');
+        if (sub.textContent.includes('Sisa')) {
+          sub.className = 'font-label-sm text-label-sm text-secondary mt-0.5 font-medium';
+        } else {
+          sub.className = 'font-label-sm text-label-sm text-ink-muted mt-0.5';
+        }
+      }
+    });
+  }
+
+  function updateStickySummary() {
+    const summary = document.getElementById('sticky-selection-summary');
+    if (summary) {
+      summary.textContent = currentSelection.color.split('&')[0].trim() + ' • EU ' + currentSelection.size;
+    }
+  }
+
+  function toggleAccordion(contentId, btn) {
+    const content = document.getElementById(contentId);
+    const icon = btn.querySelector('.accordion-icon');
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+    if (isExpanded) {
+      content.classList.add('hidden');
+      icon.classList.remove('rotate-180');
+      btn.setAttribute('aria-expanded', 'false');
+    } else {
+      content.classList.remove('hidden');
+      icon.classList.add('rotate-180');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  let isWishlisted = false;
+  function toggleWishlist() {
+    isWishlisted = !isWishlisted;
+    const icon = document.getElementById('wishlist-icon');
+    const label = document.getElementById('wishlist-label');
+    if (isWishlisted) {
+      icon.style.fontVariationSettings = "'FILL' 1";
+      icon.classList.add('text-error');
+      label.textContent = 'Tersimpan';
+      showToast('Ditambahkan ke Wishlist', 'favorite');
+    } else {
+      icon.style.fontVariationSettings = "'FILL' 0";
+      icon.classList.remove('text-error');
+      label.textContent = 'Simpan';
+      showToast('Dihapus dari Wishlist', 'favorite_border');
+    }
+  }
+
+  function handleAddToCart() {
+    const btn = document.getElementById('add-to-cart-btn');
+    btn.classList.add('scale-95');
+    setTimeout(() => btn.classList.remove('scale-95'), 150);
+    showToast('Ditambahkan: ' + currentSelection.color.split('&')[0].trim() + ' (EU ' + currentSelection.size + ')', 'shopping_bag');
+  }
+
+  function openAdvisorChat() {
+    showToast('Membuka sesi konsultasi WhatsApp Atelier...', 'forum');
+  }
+
+  function openSizeGuideModal() {
+    const modal = document.getElementById('size-guide-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closeSizeGuideModal() {
+    const modal = document.getElementById('size-guide-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  let toastTimer;
+  function showToast(message, iconName = 'check_circle') {
+    const toast = document.getElementById('toast-notification');
+    const msgElem = document.getElementById('toast-message');
+    const iconElem = document.getElementById('toast-icon');
+
+    msgElem.textContent = message;
+    iconElem.textContent = iconName;
+
+    toast.classList.remove('opacity-0', 'pointer-events-none');
+    toast.classList.add('opacity-100');
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('opacity-100');
+      toast.classList.add('opacity-0', 'pointer-events-none');
+    }, 2400);
+  }
+</script></main></body></html>

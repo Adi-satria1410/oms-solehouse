@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-surface":"#32302c","border-subtle":"#E3D8CA","on-tertiary-fixed":"#171e0d","badge-olive":"#5E6650","background":"#fef9f2","secondary-fixed":"#ffdbcb","tertiary":"#0f1506","surface-container-low":"#f8f3ec","bg-sand":"#E8DDCF","on-primary-fixed-variant":"#4f4540","on-error-container":"#93000a","surface-container-lowest":"#ffffff","outline":"#807570","on-tertiary-fixed-variant":"#424935","surface-variant":"#e7e2db","on-primary":"#ffffff","bg-surface":"#FFFFFF","on-background":"#1d1b17","surface-container":"#f2ede6","inverse-primary":"#d3c3bd","accent-hover":"#9A5430","on-tertiary":"#ffffff","surface-tint":"#685c57","on-surface-variant":"#4e4541","surface-container-highest":"#e7e2db","ink-secondary":"#6B5E55","tertiary-container":"#232a18","bg-taupe":"#B9AB9A","surface":"#fef9f2","outline-variant":"#d1c4be","bg-base":"#F6F1EA","surface-container-high":"#ece7e1","secondary-container":"#fc9f6f","on-primary-fixed":"#221a16","secondary":"#934a22","on-secondary-container":"#76340c","surface-dim":"#ded9d3","error":"#ba1a1a","on-surface":"#1d1b17","on-primary-container":"#9a8c87","on-error":"#ffffff","on-secondary":"#ffffff","ink-primary":"#2F2622","tertiary-fixed":"#dee6ca","ink-muted":"#9A8D83","inverse-on-surface":"#f5f0e9","secondary-fixed-dim":"#ffb692","on-tertiary-container":"#8a927a","primary-fixed-dim":"#d3c3bd","primary-fixed":"#f0dfd9","primary":"#19120e","primary-container":"#2f2622","tertiary-fixed-dim":"#c1caaf","on-secondary-fixed-variant":"#75340b","surface-bright":"#fef9f2","on-secondary-fixed":"#341100","error-container":"#ffdad6"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin":"3rem","space-md":"1rem","space-xl":"2.5rem","gutter-mobile":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","gutter":"1.5rem","space-sm":"0.5rem","margin-mobile":"1.25rem"},fontFamily:{"display-lg":["Playfair Display"],"headline-sm":["Playfair Display"],"label-sm":["Inter"],"title-sm":["Inter"],"body-md":["Inter"],"body-sm":["Inter"],"headline-lg-mobile":["Playfair Display"],"display-lg-mobile":["Playfair Display"],"title-md":["Inter"],"label-md":["Inter"],"headline-lg":["Playfair Display"],"body-lg":["Inter"],"headline-md":["Playfair Display"]},fontSize:{"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"600"}],"headline-sm":["22px",{lineHeight:"30px",fontWeight:"500"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.05em",fontWeight:"500"}],"title-sm":["16px",{lineHeight:"24px",fontWeight:"600"}],"body-md":["14px",{lineHeight:"22px",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-lg-mobile":["28px",{lineHeight:"36px",fontWeight:"500"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.01em",fontWeight:"600"}],"title-md":["18px",{lineHeight:"26px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"600"}],"headline-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.01em",fontWeight:"500"}],"body-lg":["16px",{lineHeight:"26px",fontWeight:"400"}],"headline-md":["28px",{lineHeight:"36px",fontWeight:"500"}]}}}};</script></head><body class="bg-bg-base font-body-md text-on-surface min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed"><aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="px-space-lg mb-space-xl flex items-center justify-between"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-surface tracking-tight">SOLEHOUSE</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-outline-variant font-semibold mt-0.5">Atelier &amp; Orders</span></div><span class="px-space-xs py-0.5 rounded-full bg-badge-olive text-on-tertiary font-label-sm text-label-sm">v2.4</span></div><nav class="flex flex-col space-y-1 px-space-sm" data-active-classes="bg-primary text-surface font-semibold pl-space-md border-l-4 border-secondary"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">space_dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="pesanan" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span class="font-body-md text-body-md">Pesanan</span></div><span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm">12</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="produk" href="#"><span class="material-symbols-outlined text-[20px]">steps</span><span class="font-body-md text-body-md">Produk</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="inventori" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-body-md text-body-md">Inventori</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="pelanggan" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md">Pelanggan</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="pengiriman" href="#"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span class="font-body-md text-body-md">Pengiriman</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="retur" href="#"><span class="material-symbols-outlined text-[20px]">assignment_return</span><span class="font-body-md text-body-md">Retur</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Laporan</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="pengaturan" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Pengaturan</span></a></nav></div><div class="px-space-md mt-space-lg"><div class="p-space-md rounded-xl bg-primary/40 flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-outline-variant uppercase">Sistem OMS</span><span class="font-body-sm text-body-sm text-surface font-medium flex items-center gap-1.5 mt-0.5"><span class="w-2 h-2 rounded-full bg-badge-olive"></span>Toko Beroperasi</span></div><span class="material-symbols-outlined text-outline-variant text-[18px]">storefront</span></div></div></aside><div class="pl-[260px]"><header class="fixed top-0 left-[260px] right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md z-40 px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between"><div class="flex items-center gap-space-lg flex-1 max-w-xl"><div class="relative w-full max-w-sm"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full pl-9 pr-space-md py-1.5 rounded-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest transition-colors" placeholder="Cari pesanan, SKU, atau nama pelanggan..." type="text"/></div><div class="hidden lg:flex items-center gap-2 px-space-md py-1 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-badge-olive"></span><span class="font-label-md text-label-md text-on-surface-variant uppercase">Butik Flagship Jakarta • Live</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">calendar_today</span><span class="font-body-sm text-body-sm">Hari ini, 24 Mei 2024</span><span class="material-symbols-outlined text-[16px]">expand_more</span></div><div class="relative flex items-center justify-center p-2 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low cursor-pointer transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></div><div class="h-6 w-[1px] bg-surface-container-high"></div><div class="flex items-center gap-3 pl-1"><div class="flex flex-col text-right hidden sm:flex"><span class="font-title-sm text-title-sm text-on-surface leading-tight">Aditya R.</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Head of Operations</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-bg-base min-h-screen px-space-lg py-space-xl"><div class="flex flex-col w-full">
+<!-- Page Header & Global Actions -->
+<div class="flex flex-col xl:flex-row xl:items-end justify-between gap-space-lg mb-space-xl">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-secondary font-semibold">KATALOG ATELIER &amp; PENGELOLAAN STOK</span>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mt-1">Produk &amp; Inventori</h1>
+<p class="font-body-md text-body-md text-ink-secondary mt-1.5 max-w-2xl">
+        Kelola hierarki SKU, alokasi stok per varian matriks ukuran, penyesuaian harga ritel, dan inventori lintas Atelier Bandung serta Flagship Jakarta secara terpusat.
+      </p>
+</div>
+<!-- Action CTAs -->
+<div class="flex items-center flex-wrap gap-space-sm">
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shadow-sm hover:bg-surface-container hover:shadow transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-ink-secondary">ios_share</span>
+<span>Ekspor Data</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shadow-sm hover:bg-surface-container hover:shadow transition-all" type="button">
+<span class="material-symbols-outlined text-[18px] text-ink-secondary">upload_file</span>
+<span>Impor CSV</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-lg py-2 rounded-full bg-primary text-on-primary font-title-sm text-body-sm shadow-md hover:bg-ink-primary hover:shadow-lg transition-all" id="open-drawer-btn" type="button">
+<span class="material-symbols-outlined text-[20px] text-secondary-fixed">add_circle</span>
+<span>+ Tambah Produk</span>
+</button>
+</div>
+</div>
+<!-- Stat Summary Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md mb-space-xl">
+<!-- Stat 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Total SKU Aktif</span>
+<span class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-secondary">
+<span class="material-symbols-outlined text-[18px]">inventory</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-sm text-headline-sm text-primary tracking-tight">24 Model</div>
+<div class="flex items-center gap-1.5 mt-1 font-body-sm text-body-sm text-ink-secondary">
+<span class="font-semibold text-ink-primary">148</span> Varian ukuran aktif
+        </div>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Total Unit Stok</span>
+<span class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-badge-olive">
+<span class="material-symbols-outlined text-[18px]">layers</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-sm text-headline-sm text-primary tracking-tight tabular-nums">1.842 Pasang</div>
+<div class="flex items-center gap-1.5 mt-1 font-body-sm text-body-sm text-badge-olive">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>94% Ketersediaan aman</span>
+</div>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Stok Kritis / Menipis</span>
+<span class="w-8 h-8 rounded-full bg-secondary-fixed/50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-sm text-headline-sm text-secondary tracking-tight tabular-nums">6 Varian</div>
+<div class="flex items-center gap-1.5 mt-1 font-body-sm text-body-sm text-secondary font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>&lt; 3 pasang per ukuran</span>
+</div>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-ink-muted">Nilai Inventori (COGS)</span>
+<span class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-ink-secondary">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</span>
+</div>
+<div class="mt-space-md">
+<div class="font-headline-sm text-headline-sm text-primary tracking-tight tabular-nums">Rp 2.418.500.000</div>
+<div class="flex items-center gap-1.5 mt-1 font-body-sm text-body-sm text-ink-secondary">
+<span>Ritel Bruto: </span>
+<span class="font-medium text-ink-primary tabular-nums">Rp 4.12 Miliar</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm mb-space-lg flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 flex-1">
+<!-- Search Input -->
+<div class="relative flex-1 min-w-[260px]">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-muted text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 rounded-full bg-surface-container-low text-ink-primary placeholder:text-ink-muted font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-colors" placeholder="Cari nama produk, SKU, material kulit, sol..." type="text"/>
+</div>
+<!-- Kategori Filter -->
+<div class="relative">
+<select class="appearance-none w-full sm:w-auto bg-surface-container-low text-ink-primary font-body-sm text-body-sm pl-4 pr-9 py-2 rounded-full focus:outline-none cursor-pointer">
+<option>Semua Kategori</option>
+<option>Sneakers</option>
+<option>Loafers</option>
+<option>Boots</option>
+<option>Oxford / Dress</option>
+<option>Sandal Kriya</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-ink-muted pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+<!-- Status Filter -->
+<div class="relative">
+<select class="appearance-none w-full sm:w-auto bg-surface-container-low text-ink-primary font-body-sm text-body-sm pl-4 pr-9 py-2 rounded-full focus:outline-none cursor-pointer">
+<option>Semua Status</option>
+<option>Aktif</option>
+<option>Draft</option>
+<option>Stok Habis</option>
+<option>Stok Kritis</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-ink-muted pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+<!-- Lokasi Filter -->
+<div class="relative">
+<select class="appearance-none w-full sm:w-auto bg-surface-container-low text-ink-primary font-body-sm text-body-sm pl-4 pr-9 py-2 rounded-full focus:outline-none cursor-pointer">
+<option>Semua Lokasi</option>
+<option>Atelier Bandung</option>
+<option>Flagship Jakarta</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-ink-muted pointer-events-none text-[18px]">arrow_drop_down</span>
+</div>
+</div>
+<!-- Count Summary Indicator -->
+<div class="flex items-center justify-between sm:justify-end gap-3 px-1 text-ink-muted font-label-md text-label-md">
+<span>Menampilkan <strong class="text-ink-primary font-semibold tabular-nums">5</strong> dari <strong class="text-ink-primary font-semibold tabular-nums">24</strong> produk</span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded hover:bg-surface-container text-ink-secondary" title="Sebelumnya">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="p-1 rounded hover:bg-surface-container text-ink-secondary" title="Selanjutnya">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Primary Products Table -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-space-xl">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/60 text-ink-muted font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3.5 pl-space-md pr-2 w-12 text-center">
+<input class="rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</th>
+<th class="py-3.5 px-3">Produk &amp; Konstruksi</th>
+<th class="py-3.5 px-3">SKU Induk</th>
+<th class="py-3.5 px-3">Kategori</th>
+<th class="py-3.5 px-3 text-right">Harga Ritel</th>
+<th class="py-3.5 px-4">Ketersediaan Stok</th>
+<th class="py-3.5 px-3 text-center">Status</th>
+<th class="py-3.5 pr-space-md pl-3 text-right">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-ink-primary font-body-sm text-body-sm">
+<!-- ROW 1: EXPANDED ROW (Artisan Grand Sneaker V.1) -->
+<tr class="bg-surface-container-low/40 transition-colors">
+<td class="py-4 pl-space-md pr-2 text-center align-top pt-5">
+<div class="flex items-center justify-center gap-2">
+<button class="text-ink-secondary hover:text-primary transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">keyboard_arrow_down</span>
+</button>
+<input checked="" class="rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</div>
+</td>
+<td class="py-4 px-3 align-top">
+<div class="flex items-center gap-3.5">
+<div class="w-14 h-14 rounded-lg bg-bg-sand/70 p-1 flex-shrink-0 flex items-center justify-center shadow-inner overflow-hidden">
+<img class="w-full h-full object-cover rounded" data-alt="Artisanal luxury leather low-top sneaker made from rich Italian pull-up leather in tan ochre, detailed craftsmanship with hand-stitched welt, studio product shot on warm sand background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_d9Vmn3-KEDouHFOlfWM4Jowln5EjFQlNxIvHcJ4b-RX4l5QCxaSa9Wc6cEiH8-sXiGxihSkwOOCGztxjHEnU8v24s9GluOpC_hhEK1GcOrUs-QgBq7aMlkPI2gC8m8zsShnuiYxY4r3wGB7XlajACHgSPJoSLDJl03yxfS7VzpN_lxHlsjTIsl_qdmJU6ykxsL-xETy5BW2oBrwyhsUXd0M2pSzxq0NMuOgqDYX_"/>
+</div>
+<div class="min-w-0">
+<div class="font-title-sm text-title-sm text-primary truncate">Artisan Grand Sneaker V.1</div>
+<div class="font-body-sm text-body-sm text-ink-muted truncate mt-0.5">Full-grain Pull-up Leather • Blake-stitched Cupsole</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-sm text-label-sm text-badge-olive bg-tertiary-fixed px-2 py-0.5 rounded-full font-medium">4 Warna Tersedia</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Bandung &amp; Jakarta</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="font-title-sm text-body-sm font-mono tracking-tight text-ink-secondary bg-surface-container px-2.5 py-1 rounded">SH-SNK-042</span>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-ink-primary">Sneakers</span>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-right font-title-sm text-body-md tabular-nums text-primary">
+              Rp 1.490.000
+            </td>
+<td class="py-4 px-4 align-top pt-5">
+<div class="flex flex-col gap-1.5 w-44">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-semibold text-primary tabular-nums">84 pasang</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Kapasitas 100</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-badge-olive w-[84%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-center">
+<div class="inline-flex items-center gap-2">
+<div class="w-8 h-4.5 bg-badge-olive rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-tertiary rounded-full shadow-sm"></div>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-badge-olive uppercase">Aktif</span>
+</div>
+</td>
+<td class="py-4 pr-space-md pl-3 align-top pt-5 text-right">
+<div class="inline-flex items-center gap-1 text-ink-secondary">
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Edit Produk" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Duplikat" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- EXPANDED MATRIX CONTAINER -->
+<tr class="bg-surface-container-low/20">
+<td class="p-0" colspan="8">
+<div class="m-space-md p-space-lg rounded-xl bg-background shadow-md">
+<!-- Matrix Sub-header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-space-md mb-space-md">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[22px]">grid_view</span>
+<div>
+<h4 class="font-title-sm text-title-sm text-primary">Matriks Varian &amp; Alokasi Stok per Ukuran — Artisan Grand Sneaker V.1</h4>
+<p class="font-body-sm text-body-sm text-ink-muted">Klik sel angka untuk menyesuaikan stok langsung di gudang.</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-secondary-fixed/40 font-label-sm text-label-sm text-secondary font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                      Stok Kritis (&lt; 3)
+                    </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container font-label-sm text-label-sm text-ink-secondary">
+<span class="w-2 h-2 rounded-full bg-badge-olive"></span>
+                      Stok Aman
+                    </span>
+</div>
+</div>
+<!-- Matrix Grid Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-center border-collapse">
+<thead>
+<tr class="bg-surface-container text-ink-primary font-label-md text-label-md uppercase">
+<th class="py-2.5 px-4 text-left rounded-l-lg">Varian Warna / Finis Kulit</th>
+<th class="py-2.5 px-2">EU 38</th>
+<th class="py-2.5 px-2">EU 39</th>
+<th class="py-2.5 px-2">EU 40</th>
+<th class="py-2.5 px-2">EU 41</th>
+<th class="py-2.5 px-2">EU 42</th>
+<th class="py-2.5 px-2">EU 43</th>
+<th class="py-2.5 px-2">EU 44</th>
+<th class="py-2.5 px-2">EU 45</th>
+<th class="py-2.5 px-3 font-semibold text-primary">Total Unit</th>
+<th class="py-2.5 px-3 rounded-r-lg text-right">Aksi SKU</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm">
+<!-- Color 1: Ochre & Tan Welt -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3 px-4 text-left font-medium text-ink-primary">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full bg-[#B5653A] shadow-sm flex-shrink-0"></span>
+<div class="flex flex-col">
+<span>Ochre &amp; Tan Welt</span>
+<span class="font-label-sm text-label-sm text-ink-muted">SKU: SH-SNK-042-OCH</span>
+</div>
+</div>
+</td>
+<!-- Sizes -->
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="3"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="4"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="6"/></td>
+<!-- Kritis EU 41 -->
+<td class="p-1.5">
+<div class="relative inline-block">
+<input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="2"/>
+<span class="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-secondary text-on-secondary rounded-full flex items-center justify-center font-label-sm text-[9px] leading-none">!</span>
+</div>
+</td>
+<!-- Kritis EU 42 -->
+<td class="p-1.5">
+<div class="relative inline-block">
+<input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="1"/>
+<span class="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-secondary text-on-secondary rounded-full flex items-center justify-center font-label-sm text-[9px] leading-none">!</span>
+</div>
+</td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="4"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="2"/></td>
+<!-- Habis EU 45 -->
+<td class="p-1.5">
+<span class="inline-block w-12 py-1 rounded bg-surface-container text-ink-muted line-through font-label-sm text-label-sm tabular-nums">0</span>
+</td>
+<td class="py-3 px-3 font-semibold text-primary tabular-nums">22 pasang</td>
+<td class="py-3 px-3 text-right">
+<button class="text-ink-secondary hover:text-secondary text-body-sm font-medium">Atur Barcode</button>
+</td>
+</tr>
+<!-- Color 2: Espresso Brown -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3 px-4 text-left font-medium text-ink-primary">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full bg-[#2F2622] shadow-sm flex-shrink-0"></span>
+<div class="flex flex-col">
+<span>Espresso Brown</span>
+<span class="font-label-sm text-label-sm text-ink-muted">SKU: SH-SNK-042-ESP</span>
+</div>
+</div>
+</td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="4"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="5"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="6"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="5"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="3"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="4"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="2"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="1"/></td>
+<td class="py-3 px-3 font-semibold text-primary tabular-nums">30 pasang</td>
+<td class="py-3 px-3 text-right">
+<button class="text-ink-secondary hover:text-secondary text-body-sm font-medium">Atur Barcode</button>
+</td>
+</tr>
+<!-- Color 3: Sand Taupe Suede -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3 px-4 text-left font-medium text-ink-primary">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full bg-[#B9AB9A] shadow-sm flex-shrink-0"></span>
+<div class="flex flex-col">
+<span>Sand Taupe Suede</span>
+<span class="font-label-sm text-label-sm text-ink-muted">SKU: SH-SNK-042-TPS</span>
+</div>
+</div>
+</td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="2"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="3"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="4"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="4"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="3"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="2"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="1"/></td>
+<td class="p-1.5"><span class="inline-block w-12 py-1 rounded bg-surface-container text-ink-muted line-through font-label-sm text-label-sm tabular-nums">0</span></td>
+<td class="py-3 px-3 font-semibold text-primary tabular-nums">19 pasang</td>
+<td class="py-3 px-3 text-right">
+<button class="text-ink-secondary hover:text-secondary text-body-sm font-medium">Atur Barcode</button>
+</td>
+</tr>
+<!-- Color 4: Off-White / Natural Pull-up -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3 px-4 text-left font-medium text-ink-primary">
+<div class="flex items-center gap-2.5">
+<span class="w-4 h-4 rounded-full bg-[#E8DDCF] shadow-sm flex-shrink-0"></span>
+<div class="flex flex-col">
+<span>Off-White Natural</span>
+<span class="font-label-sm text-label-sm text-ink-muted">SKU: SH-SNK-042-NAT</span>
+</div>
+</div>
+</td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="1"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="2"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="3"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-surface-container-lowest font-body-sm tabular-nums text-ink-primary shadow-xs focus:ring-1 focus:ring-primary focus:outline-none" type="number" value="3"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="2"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="1"/></td>
+<td class="p-1.5"><input class="w-12 text-center py-1 rounded bg-secondary-fixed/50 font-title-sm text-body-sm tabular-nums text-secondary shadow-xs focus:ring-1 focus:ring-secondary focus:outline-none" type="number" value="1"/></td>
+<td class="p-1.5"><span class="inline-block w-12 py-1 rounded bg-surface-container text-ink-muted line-through font-label-sm text-label-sm tabular-nums">0</span></td>
+<td class="py-3 px-3 font-semibold text-primary tabular-nums">13 pasang</td>
+<td class="py-3 px-3 text-right">
+<button class="text-ink-secondary hover:text-secondary text-body-sm font-medium">Atur Barcode</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Matrix Bottom Actions -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-space-md pt-space-md">
+<div class="font-body-sm text-body-sm text-ink-muted flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-badge-olive">sync</span>
+<span>Terakhir sinkronisasi stok: 12 menit lalu oleh Aditya R.</span>
+</div>
+<div class="flex items-center gap-space-sm justify-end">
+<button class="px-space-md py-1.5 rounded-full bg-surface-container-low text-ink-secondary font-title-sm text-body-sm hover:bg-surface-container transition-colors" type="button">
+                      Batal
+                    </button>
+<button class="px-space-lg py-1.5 rounded-full bg-secondary text-on-secondary font-title-sm text-body-sm shadow-sm hover:bg-accent-hover transition-colors flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Simpan Perubahan Stok</span>
+</button>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Vagabond Suede Loafer (Collapsed) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 pl-space-md pr-2 text-center align-top pt-5">
+<div class="flex items-center justify-center gap-2">
+<button class="text-ink-secondary hover:text-primary transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_right</span>
+</button>
+<input class="rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</div>
+</td>
+<td class="py-4 px-3 align-top">
+<div class="flex items-center gap-3.5">
+<div class="w-14 h-14 rounded-lg bg-bg-sand/70 p-1 flex-shrink-0 flex items-center justify-center shadow-inner overflow-hidden">
+<img class="w-full h-full object-cover rounded" data-alt="Handcrafted men penny loafer made with premium espresso brown suede leather, hand-stitched apron toe, refined bespoke artisanal finish on soft warm studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsMkjG0xkj2EkUAFy-at8pUku7fQX9z5p-GjGFBZUBGdQEY2j8TAsgrBss_Xy_CItSs1fC9ZuZpVKXOggPO00CVCiblU33Qjd7MCOCT4wSIRun7A84RiKfq5Nv4EGezr1289MO6xqwOXbJEWgIGpVMjKYhpqjfwlkzfwuoTFZFASDtnH4O8m1DADc1841kKZZuhBO_MhkTrchaxvtLXHXMzfMVFrbqsaXo_q3bgwqk"/>
+</div>
+<div class="min-w-0">
+<div class="font-title-sm text-title-sm text-primary truncate">Vagabond Suede Loafer</div>
+<div class="font-body-sm text-body-sm text-ink-muted truncate mt-0.5">Velvety Suede Calfskin • Leather Outsole with Rubber Grip</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-sm text-label-sm text-ink-secondary bg-surface-container px-2 py-0.5 rounded-full font-medium">3 Warna Tersedia</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Flagship Jakarta</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="font-title-sm text-body-sm font-mono tracking-tight text-ink-secondary bg-surface-container px-2.5 py-1 rounded">SH-LFR-018</span>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-ink-primary">Loafers</span>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-right font-title-sm text-body-md tabular-nums text-primary">
+              Rp 1.350.000
+            </td>
+<td class="py-4 px-4 align-top pt-5">
+<div class="flex flex-col gap-1.5 w-44">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-semibold text-primary tabular-nums">42 pasang</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Kapasitas 60</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-badge-olive w-[70%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-center">
+<div class="inline-flex items-center gap-2">
+<div class="w-8 h-4.5 bg-badge-olive rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-tertiary rounded-full shadow-sm"></div>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-badge-olive uppercase">Aktif</span>
+</div>
+</td>
+<td class="py-4 pr-space-md pl-3 align-top pt-5 text-right">
+<div class="inline-flex items-center gap-1 text-ink-secondary">
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Edit Produk" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Duplikat" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Heritage Moc Toe Boot (Collapsed & Warning) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 pl-space-md pr-2 text-center align-top pt-5">
+<div class="flex items-center justify-center gap-2">
+<button class="text-ink-secondary hover:text-primary transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_right</span>
+</button>
+<input class="rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</div>
+</td>
+<td class="py-4 px-3 align-top">
+<div class="flex items-center gap-3.5">
+<div class="w-14 h-14 rounded-lg bg-bg-sand/70 p-1 flex-shrink-0 flex items-center justify-center shadow-inner overflow-hidden">
+<img class="w-full h-full object-cover rounded" data-alt="Rugged heritage moc toe boots crafted from oil-tanned dark amber leather with Goodyear welt and Vibram wedge sole, editorial artisanal footwear view." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATk-nqLZztO5zgj6u_knwkJaCA7GDuRgp59ouP-rUwH97jcbd8ceNpd6EEIA3dS2BFCwinWxQqsmqhEBn1Vi4cuAT_OrMru2_XlLo7V9mIU9gENePCFifROdDu8e7OVafAZEbecY5G8Vo3J9tR_wfweCesgreXplqW11KQExcmEf0Xshnl28g5KUBpFyyy5J-DVP6cBakrMKYb99J9AGKXY_7ODoQxiLCK0LKi16bz"/>
+</div>
+<div class="min-w-0">
+<div class="font-title-sm text-title-sm text-primary truncate">Heritage Moc Toe Boot</div>
+<div class="font-body-sm text-body-sm text-ink-muted truncate mt-0.5">Oil-Tanned Cowhide • Goodyear Welt 360° Construction</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-fixed/60 px-2 py-0.5 rounded-full font-semibold">Stok Kritis</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Atelier Bandung</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="font-title-sm text-body-sm font-mono tracking-tight text-ink-secondary bg-surface-container px-2.5 py-1 rounded">SH-BOT-009</span>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-ink-primary">Boots</span>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-right font-title-sm text-body-md tabular-nums text-primary">
+              Rp 2.150.000
+            </td>
+<td class="py-4 px-4 align-top pt-5">
+<div class="flex flex-col gap-1.5 w-44">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-semibold text-secondary tabular-nums">18 pasang</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Kapasitas 50</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-secondary w-[36%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-center">
+<div class="inline-flex items-center gap-2">
+<div class="w-8 h-4.5 bg-badge-olive rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-tertiary rounded-full shadow-sm"></div>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-badge-olive uppercase">Aktif</span>
+</div>
+</td>
+<td class="py-4 pr-space-md pl-3 align-top pt-5 text-right">
+<div class="inline-flex items-center gap-1 text-ink-secondary">
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Edit Produk" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Duplikat" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: Oxford Classic Tan Brogue -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 pl-space-md pr-2 text-center align-top pt-5">
+<div class="flex items-center justify-center gap-2">
+<button class="text-ink-secondary hover:text-primary transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_right</span>
+</button>
+<input class="rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</div>
+</td>
+<td class="py-4 px-3 align-top">
+<div class="flex items-center gap-3.5">
+<div class="w-14 h-14 rounded-lg bg-bg-sand/70 p-1 flex-shrink-0 flex items-center justify-center shadow-inner overflow-hidden">
+<img class="w-full h-full object-cover rounded" data-alt="Classic tan wingtip brogue oxford dress shoes crafted with hand-burnished vegetable tanned leather, closed lacing, elegant gentlemen footwear on neutral surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxgB0dQpHe-SwPIL4b9Axw0TeoyzxUazsdGuxy9OwtTuVOM1Jn0Y4gz5zkdHj94zrUBsW8jPx1LYuSLN8XeubMz1S63Mjn3AJtocB6VQsurqGz78EOL8pqUm_592HhSunsbZW7D7F-K1USzyMGm44kTn40ixe_gDaWZ4YuqUnmOWgUYK6OV1yUPQ9a914fHmi-sDctIiRH1WqfNmRFGPJqSMK9bvAFT36iGS7dOLk_"/>
+</div>
+<div class="min-w-0">
+<div class="font-title-sm text-title-sm text-primary truncate">Oxford Classic Tan Brogue</div>
+<div class="font-body-sm text-body-sm text-ink-muted truncate mt-0.5">Box Calf Aniline • Hand-burnished Wingtip Broguing</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-sm text-label-sm text-ink-secondary bg-surface-container px-2 py-0.5 rounded-full font-medium">2 Warna Tersedia</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Bandung &amp; Jakarta</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="font-title-sm text-body-sm font-mono tracking-tight text-ink-secondary bg-surface-container px-2.5 py-1 rounded">SH-OXF-003</span>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-ink-primary">Formal / Dress</span>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-right font-title-sm text-body-md tabular-nums text-primary">
+              Rp 1.850.000
+            </td>
+<td class="py-4 px-4 align-top pt-5">
+<div class="flex flex-col gap-1.5 w-44">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-semibold text-primary tabular-nums">36 pasang</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Kapasitas 45</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-badge-olive w-[80%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-center">
+<div class="inline-flex items-center gap-2">
+<div class="w-8 h-4.5 bg-badge-olive rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-tertiary rounded-full shadow-sm"></div>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-badge-olive uppercase">Aktif</span>
+</div>
+</td>
+<td class="py-4 pr-space-md pl-3 align-top pt-5 text-right">
+<div class="inline-flex items-center gap-1 text-ink-secondary">
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Edit Produk" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Duplikat" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: Aero Minimal Trainer Putih -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-4 pl-space-md pr-2 text-center align-top pt-5">
+<div class="flex items-center justify-center gap-2">
+<button class="text-ink-secondary hover:text-primary transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]">keyboard_arrow_right</span>
+</button>
+<input class="rounded text-primary focus:ring-0 cursor-pointer accent-primary" type="checkbox"/>
+</div>
+</td>
+<td class="py-4 px-3 align-top">
+<div class="flex items-center gap-3.5">
+<div class="w-14 h-14 rounded-lg bg-bg-sand/70 p-1 flex-shrink-0 flex items-center justify-center shadow-inner overflow-hidden">
+<img class="w-full h-full object-cover rounded" data-alt="Clean minimal all-white leather trainer shoe with off-white rubber sole, Scandinavian minimal design aesthetics, studio product photo on ivory backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC16gEQeEHKEw6CXrH1JNef1_-bYuj8vndttXSYPyuhRDvGihWikQIgHu--XyC0BM7iBpvxpkXV9BuZbRLSsCKypVF9O4xMSAH0G05xLcwZFmEXNFU3nWQC_UVDxqd5np4vLR5y5ajrlO1E98LyJW84c5UbBPjaYddOTprj6-jRTBCuvpvvWZTTDE635n5aB2sasmOsvz0Db3CivYDYPxzlbd1ZTAB8EvtL4B2oQbha"/>
+</div>
+<div class="min-w-0">
+<div class="font-title-sm text-title-sm text-primary truncate">Aero Minimal Trainer Putih</div>
+<div class="font-body-sm text-body-sm text-ink-muted truncate mt-0.5">Nappa Calfskin • Lightweight Margom Rubber Sole</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-label-sm text-label-sm text-ink-secondary bg-surface-container px-2 py-0.5 rounded-full font-medium">1 Warna Monokrom</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Semua Gudang</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="font-title-sm text-body-sm font-mono tracking-tight text-ink-secondary bg-surface-container px-2.5 py-1 rounded">SH-SNK-015</span>
+</td>
+<td class="py-4 px-3 align-top pt-5">
+<span class="px-2.5 py-1 rounded-full bg-surface-container font-label-md text-label-md text-ink-primary">Sneakers</span>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-right font-title-sm text-body-md tabular-nums text-primary">
+              Rp 1.250.000
+            </td>
+<td class="py-4 px-4 align-top pt-5">
+<div class="flex flex-col gap-1.5 w-44">
+<div class="flex items-center justify-between text-body-sm">
+<span class="font-semibold text-primary tabular-nums">60 pasang</span>
+<span class="font-label-sm text-label-sm text-ink-muted">Kapasitas 80</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container overflow-hidden">
+<div class="h-full rounded-full bg-badge-olive w-[75%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 px-3 align-top pt-5 text-center">
+<div class="inline-flex items-center gap-2">
+<div class="w-8 h-4.5 bg-badge-olive rounded-full p-0.5 flex items-center justify-end cursor-pointer">
+<div class="w-3.5 h-3.5 bg-on-tertiary rounded-full shadow-sm"></div>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-badge-olive uppercase">Aktif</span>
+</div>
+</td>
+<td class="py-4 pr-space-md pl-3 align-top pt-5 text-right">
+<div class="inline-flex items-center gap-1 text-ink-secondary">
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Edit Produk" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Duplikat" type="button">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+<button class="p-1.5 rounded-full hover:bg-surface-container hover:text-primary transition-colors" title="Lainnya" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Footer -->
+<div class="px-space-lg py-3.5 bg-surface-container-low/40 flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="font-body-sm text-body-sm text-ink-secondary">
+        Baris per halaman: <span class="font-semibold text-ink-primary">10</span> • Total 24 produk kriya
+      </div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded bg-surface-container text-ink-muted cursor-not-allowed text-body-sm" disabled="">Sebelumnya</button>
+<button class="px-3 py-1 rounded bg-primary text-on-primary font-semibold text-body-sm">1</button>
+<button class="px-3 py-1 rounded bg-surface-container hover:bg-surface-container-high text-ink-primary text-body-sm">2</button>
+<button class="px-3 py-1 rounded bg-surface-container hover:bg-surface-container-high text-ink-primary text-body-sm">3</button>
+<button class="px-3 py-1 rounded bg-surface-container hover:bg-surface-container-high text-ink-primary text-body-sm">Selanjutnya</button>
+</div>
+</div>
+</div>
+<!-- Side Drawer Backdrop & Container -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-xs z-50 transition-opacity duration-300 hidden" id="drawer-backdrop">
+<!-- Sliding Drawer -->
+<div class="absolute right-0 top-0 bottom-0 w-full max-w-lg bg-surface-container-lowest shadow-2xl flex flex-col justify-between overflow-hidden transform translate-x-full transition-transform duration-300" id="drawer-panel">
+<!-- Drawer Header -->
+<div class="px-space-lg py-space-md bg-surface-container-low/70 flex items-center justify-between">
+<div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold uppercase tracking-wider">Editor Atelier</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Tambah Produk Baru</h3>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container text-ink-secondary hover:text-primary transition-colors" id="close-drawer-btn">
+<span class="material-symbols-outlined text-[22px]">close</span>
+</button>
+</div>
+<!-- Drawer Scrollable Form Body -->
+<div class="flex-1 overflow-y-auto px-space-lg py-space-md space-y-space-lg">
+<!-- Section 1: Informasi Utama -->
+<div class="space-y-3">
+<h4 class="font-title-sm text-title-sm text-primary flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-[11px] flex items-center justify-center font-bold">1</span>
+            Informasi Utama Produk
+          </h4>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-ink-secondary">Nama Model Produk</label>
+<input class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low text-ink-primary font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary transition-all" type="text" value="Artisan Grand Sneaker V.1"/>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-ink-secondary">Kategori Utama</label>
+<select class="w-full px-3 py-2 rounded-lg bg-surface-container-low text-ink-primary font-body-sm text-body-sm focus:outline-none focus:ring-1 focus:ring-primary">
+<option selected="">Sneakers</option>
+<option>Loafers</option>
+<option>Boots</option>
+<option>Oxford / Dress</option>
+<option>Sandal Kriya</option>
+</select>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-ink-secondary">SKU Induk</label>
+<input class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low text-ink-primary font-mono text-body-sm font-semibold focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="SH-SNK-042"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-ink-secondary">Deskripsi Kriya &amp; Material</label>
+<textarea class="w-full px-3.5 py-2 rounded-lg bg-surface-container-low text-ink-primary font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary transition-all" rows="3">Kulit sapi Pull-up full-grain kualitas ekspor dengan teknik Blake-stitched cupsole. Insole kulit ortotik dengan bantalan lateks alami untuk kenyamanan sepanjang hari.</textarea>
+</div>
+</div>
+<div class="h-[1px] bg-surface-container-high"></div>
+<!-- Section 2: Harga & Biaya (COGS) -->
+<div class="space-y-3">
+<h4 class="font-title-sm text-title-sm text-primary flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-[11px] flex items-center justify-center font-bold">2</span>
+            Harga &amp; Struktur Biaya
+          </h4>
+<div class="grid grid-cols-2 gap-3">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-ink-secondary">Harga Ritel (IDR)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-label-sm text-ink-muted">Rp</span>
+<input class="w-full pl-9 pr-3.5 py-2 rounded-lg bg-surface-container-low text-ink-primary font-title-sm text-body-sm tabular-nums focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="1.490.000"/>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-ink-secondary">COGS / Modal Produksi</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-label-sm text-ink-muted">Rp</span>
+<input class="w-full pl-9 pr-3.5 py-2 rounded-lg bg-surface-container-low text-ink-primary font-title-sm text-body-sm tabular-nums focus:outline-none focus:ring-1 focus:ring-primary" type="text" value="680.000"/>
+</div>
+</div>
+</div>
+<div class="p-2.5 rounded bg-surface-container-low flex items-center justify-between font-body-sm text-body-sm">
+<span class="text-ink-secondary">Estimasi Margin Bruto:</span>
+<span class="font-semibold text-badge-olive">54.3% (Rp 810.000 / pasang)</span>
+</div>
+</div>
+<div class="h-[1px] bg-surface-container-high"></div>
+<!-- Section 3: Unggah Media & Foto Produk -->
+<div class="space-y-3">
+<h4 class="font-title-sm text-title-sm text-primary flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-[11px] flex items-center justify-center font-bold">3</span>
+            Galeri Media Produk
+          </h4>
+<!-- Dropzone -->
+<div class="p-space-md rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors text-center cursor-pointer flex flex-col items-center justify-center">
+<span class="material-symbols-outlined text-[32px] text-secondary">cloud_upload</span>
+<div class="font-title-sm text-body-sm text-primary mt-1">Tarik foto produk ke sini atau telusuri berkas</div>
+<div class="font-label-sm text-label-sm text-ink-muted mt-0.5">Mendukung JPEG, PNG resolusi tinggi (Maks 10MB)</div>
+</div>
+<!-- Thumbnails Preview -->
+<div class="grid grid-cols-3 gap-2.5 pt-1">
+<div class="relative group rounded-lg overflow-hidden bg-bg-sand aspect-square shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Close up shoe profile showing fine Italian leather stitching and brass eyelets of the Grand Sneaker." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXx0un7VAuEf7D-U99r4vLPiFDmIXx6AmEbt_h5BbKmma1c5OZd_-gSZxabFYTigrpeB-ZT2XhYhB2Uu9d60FniNNy89FyBo0gG6TXIzP6BO4TVauc48FwWZRMVBeduuKuBRGhTk0c_JZ6sCHaiOVSu20U9H_ovLi42WkoIHgCUSmyhXI8qLhhte5eVJENKh4rpOPg4hHU8yYAFTEXEEdMLveduxNF0ROGy7Oze1lQ"/>
+<span class="absolute top-1 left-1 bg-primary text-on-primary font-label-sm text-[9px] px-1.5 py-0.5 rounded uppercase font-bold">Hero</span>
+<button class="absolute top-1 right-1 bg-primary/70 text-on-primary rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[14px]">delete</span>
+</button>
+</div>
+<div class="relative group rounded-lg overflow-hidden bg-bg-sand aspect-square shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Top down overhead shot of pair of artisan leather sneakers showing padded insole and leather collar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2xJ8un_Q9UDQQVnqOr3zmzbyWEx33Nv1JAmghIKj66G4DCT2RrPhu7W0nwSvFoQUDsfFxT1eCHk_m8tq2BGdJJ0YLkGMeKSThDtnq1V0QmsSUyr08aOqCHddCSEUUTMahlVt6a6H--fAVR6PcwqcxVPVMvxeDpyEd-HcE7cdlyMKm2YA2L5H_PgQI941dzRRsOMzLpDMkS0Lz7GAMXvs0VRjAUknb-cLZLQobgwhG"/>
+<button class="absolute top-1 right-1 bg-primary/70 text-on-primary rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[14px]">delete</span>
+</button>
+</div>
+<div class="relative group rounded-lg overflow-hidden bg-bg-sand aspect-square shadow-sm">
+<img class="w-full h-full object-cover" data-alt="Artisan craftsman finishing edge dye of the outsole in shoemaker workshop atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOQ1pVzPhmR8UPVpj_jUImgoUxwMjwCRlC32MJHtL5neh1IAZnPK14OoOH7uqSPhAwLX1CnWGZCG0-KbrjBSmgac4qELHDW71DVpT1Hg-gBbWCE0KdCWPM-29k-C9Ycptr0Fy1WSpK3KqJ4CkaJYoAp5fOO96IpSIQ5FKDjNdyQ88N0kb8Kd7aLbACnY8WY792BUYeRSa8GbqsBy42g6Kf1l_9Nvc_M4HUmU7O3bUa"/>
+<button class="absolute top-1 right-1 bg-primary/70 text-on-primary rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[14px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<div class="h-[1px] bg-surface-container-high"></div>
+<!-- Section 4: Varian & Ukuran -->
+<div class="space-y-3">
+<h4 class="font-title-sm text-title-sm text-primary flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-[11px] flex items-center justify-center font-bold">4</span>
+            Varian Warna &amp; Ukuran
+          </h4>
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-ink-secondary">Varian Warna Terdaftar</label>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-ink-primary font-body-sm text-body-sm">
+<span class="w-3 h-3 rounded-full bg-[#B5653A]"></span>
+<span>Ochre</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer text-ink-muted hover:text-primary">close</span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-ink-primary font-body-sm text-body-sm">
+<span class="w-3 h-3 rounded-full bg-[#2F2622]"></span>
+<span>Espresso</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer text-ink-muted hover:text-primary">close</span>
+</span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-ink-primary font-body-sm text-body-sm">
+<span class="w-3 h-3 rounded-full bg-[#B9AB9A]"></span>
+<span>Sand Taupe</span>
+<span class="material-symbols-outlined text-[14px] cursor-pointer text-ink-muted hover:text-primary">close</span>
+</span>
+<button class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container-lowest text-secondary font-title-sm text-body-sm shadow-xs hover:bg-surface-container">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span>Tambah Warna</span>
+</button>
+</div>
+</div>
+<div class="space-y-1.5 pt-1">
+<label class="font-label-md text-label-md text-ink-secondary">Rentang Ukuran Sepatu (EU)</label>
+<div class="grid grid-cols-4 gap-2 text-center">
+<div class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-title-sm text-body-sm cursor-pointer shadow-xs">EU 38</div>
+<div class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-title-sm text-body-sm cursor-pointer shadow-xs">EU 39</div>
+<div class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-title-sm text-body-sm cursor-pointer shadow-xs">EU 40</div>
+<div class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-title-sm text-body-sm cursor-pointer shadow-xs">EU 41</div>
+<div class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-title-sm text-body-sm cursor-pointer shadow-xs">EU 42</div>
+<div class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-title-sm text-body-sm cursor-pointer shadow-xs">EU 43</div>
+<div class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-title-sm text-body-sm cursor-pointer shadow-xs">EU 44</div>
+<div class="py-1.5 px-2 rounded-lg bg-primary text-on-primary font-title-sm text-body-sm cursor-pointer shadow-xs">EU 45</div>
+</div>
+</div>
+</div>
+<div class="h-[1px] bg-surface-container-high"></div>
+<!-- Section 5: Lokasi Penyimpanan Default -->
+<div class="space-y-2 pb-space-md">
+<h4 class="font-title-sm text-title-sm text-primary flex items-center gap-2">
+<span class="w-5 h-5 rounded-full bg-primary text-on-primary font-label-sm text-[11px] flex items-center justify-center font-bold">5</span>
+            Lokasi Alokasi Gudang
+          </h4>
+<div class="p-space-md rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]">warehouse</span>
+<div>
+<div class="font-title-sm text-body-sm text-primary">Gudang Utama Atelier Bandung</div>
+<div class="font-body-sm text-body-sm text-ink-muted">Alokasi Rak A2 — Suhu Terkontrol</div>
+</div>
+</div>
+<button class="text-secondary font-title-sm text-body-sm hover:underline">Ubah</button>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Sticky -->
+<div class="p-space-lg bg-surface-container-lowest shadow-[0_-4px_16px_rgba(47,38,34,0.06)] flex items-center justify-between gap-3">
+<button class="px-space-md py-2.5 rounded-full bg-surface-container text-ink-primary font-title-sm text-body-sm hover:bg-surface-container-high transition-colors" id="cancel-drawer-btn" type="button">
+          Batal
+        </button>
+<div class="flex items-center gap-2">
+<button class="px-space-md py-2.5 rounded-full bg-surface-container-low text-ink-secondary font-title-sm text-body-sm hover:bg-surface-container transition-colors" type="button">
+            Simpan Draft
+          </button>
+<button class="px-space-lg py-2.5 rounded-full bg-secondary text-on-secondary font-title-sm text-body-sm shadow-md hover:bg-accent-hover transition-all" type="button">
+            Simpan &amp; Publikasikan
+          </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    const openBtn = document.getElementById('open-drawer-btn');
+    const closeBtn = document.getElementById('close-drawer-btn');
+    const cancelBtn = document.getElementById('cancel-drawer-btn');
+    const backdrop = document.getElementById('drawer-backdrop');
+    const panel = document.getElementById('drawer-panel');
+
+    function openDrawer() {
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        panel.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    function closeDrawer() {
+      panel.classList.add('translate-x-full');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 300);
+    }
+
+    if (openBtn) openBtn.addEventListener('click', openDrawer);
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+    if (cancelBtn) cancelBtn.addEventListener('click', closeDrawer);
+
+    if (backdrop) {
+      backdrop.addEventListener('click', (e) => {
+        if (e.target === backdrop) closeDrawer();
+      });
+    }
+  })();
+</script></main></div></body></html>

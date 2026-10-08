@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+<html lang="id"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-surface":"#32302c","border-subtle":"#E3D8CA","on-tertiary-fixed":"#171e0d","badge-olive":"#5E6650","background":"#fef9f2","secondary-fixed":"#ffdbcb","tertiary":"#0f1506","surface-container-low":"#f8f3ec","bg-sand":"#E8DDCF","on-primary-fixed-variant":"#4f4540","on-error-container":"#93000a","surface-container-lowest":"#ffffff","outline":"#807570","on-tertiary-fixed-variant":"#424935","surface-variant":"#e7e2db","on-primary":"#ffffff","bg-surface":"#FFFFFF","on-background":"#1d1b17","surface-container":"#f2ede6","inverse-primary":"#d3c3bd","accent-hover":"#9A5430","on-tertiary":"#ffffff","surface-tint":"#685c57","on-surface-variant":"#4e4541","surface-container-highest":"#e7e2db","ink-secondary":"#6B5E55","tertiary-container":"#232a18","bg-taupe":"#B9AB9A","surface":"#fef9f2","outline-variant":"#d1c4be","bg-base":"#F6F1EA","surface-container-high":"#ece7e1","secondary-container":"#fc9f6f","on-primary-fixed":"#221a16","secondary":"#934a22","on-secondary-container":"#76340c","surface-dim":"#ded9d3","error":"#ba1a1a","on-surface":"#1d1b17","on-primary-container":"#9a8c87","on-error":"#ffffff","on-secondary":"#ffffff","ink-primary":"#2F2622","tertiary-fixed":"#dee6ca","ink-muted":"#9A8D83","inverse-on-surface":"#f5f0e9","secondary-fixed-dim":"#ffb692","on-tertiary-container":"#8a927a","primary-fixed-dim":"#d3c3bd","primary-fixed":"#f0dfd9","primary":"#19120e","primary-container":"#2f2622","tertiary-fixed-dim":"#c1caaf","on-secondary-fixed-variant":"#75340b","surface-bright":"#fef9f2","on-secondary-fixed":"#341100","error-container":"#ffdad6"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"margin":"3rem","space-md":"1rem","space-xl":"2.5rem","gutter-mobile":"1rem","space-xs":"0.25rem","space-lg":"1.5rem","gutter":"1.5rem","space-sm":"0.5rem","margin-mobile":"1.25rem"},fontFamily:{"display-lg":["Playfair Display"],"headline-sm":["Playfair Display"],"label-sm":["Inter"],"title-sm":["Inter"],"body-md":["Inter"],"body-sm":["Inter"],"headline-lg-mobile":["Playfair Display"],"display-lg-mobile":["Playfair Display"],"title-md":["Inter"],"label-md":["Inter"],"headline-lg":["Playfair Display"],"body-lg":["Inter"],"headline-md":["Playfair Display"]},fontSize:{"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"600"}],"headline-sm":["22px",{lineHeight:"30px",fontWeight:"500"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.05em",fontWeight:"500"}],"title-sm":["16px",{lineHeight:"24px",fontWeight:"600"}],"body-md":["14px",{lineHeight:"22px",fontWeight:"400"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"headline-lg-mobile":["28px",{lineHeight:"36px",fontWeight:"500"}],"display-lg-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.01em",fontWeight:"600"}],"title-md":["18px",{lineHeight:"26px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.04em",fontWeight:"600"}],"headline-lg":["40px",{lineHeight:"48px",letterSpacing:"-0.01em",fontWeight:"500"}],"body-lg":["16px",{lineHeight:"26px",fontWeight:"400"}],"headline-md":["28px",{lineHeight:"36px",fontWeight:"500"}]}}}};</script></head><body class="bg-bg-base font-body-md text-on-surface min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed"><aside class="fixed left-0 top-0 h-full w-[260px] bg-primary-container z-50 flex flex-col justify-between py-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col"><div class="px-space-lg mb-space-xl flex items-center justify-between"><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-surface tracking-tight">SOLEHOUSE</span><span class="font-label-sm text-label-sm uppercase tracking-widest text-outline-variant font-semibold mt-0.5">Atelier &amp; Orders</span></div><span class="px-space-xs py-0.5 rounded-full bg-badge-olive text-on-tertiary font-label-sm text-label-sm">v2.4</span></div><nav class="flex flex-col space-y-1 px-space-sm" data-active-classes="bg-primary text-surface font-semibold pl-space-md border-l-4 border-secondary"><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">space_dashboard</span><span class="font-body-md text-body-md">Dashboard</span></a><a class="flex items-center justify-between px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="pesanan" href="#"><div class="flex items-center gap-3"><span class="material-symbols-outlined text-[20px]">shopping_bag</span><span class="font-body-md text-body-md">Pesanan</span></div><span class="px-2 py-0.5 rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm">12</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="produk" href="#"><span class="material-symbols-outlined text-[20px]">steps</span><span class="font-body-md text-body-md">Produk</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="inventori" href="#"><span class="material-symbols-outlined text-[20px]">inventory_2</span><span class="font-body-md text-body-md">Inventori</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="pelanggan" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-body-md text-body-md">Pelanggan</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="pengiriman" href="#"><span class="material-symbols-outlined text-[20px]">local_shipping</span><span class="font-body-md text-body-md">Pengiriman</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="retur" href="#"><span class="material-symbols-outlined text-[20px]">assignment_return</span><span class="font-body-md text-body-md">Retur</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="laporan" href="#"><span class="material-symbols-outlined text-[20px]">bar_chart</span><span class="font-body-md text-body-md">Laporan</span></a><a class="flex items-center gap-3 px-space-md py-space-sm rounded-lg text-outline-variant hover:text-surface hover:bg-primary/50 transition-all" data-path="pengaturan" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-body-md text-body-md">Pengaturan</span></a></nav></div><div class="px-space-md mt-space-lg"><div class="p-space-md rounded-xl bg-primary/40 flex items-center justify-between"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-outline-variant uppercase">Sistem OMS</span><span class="font-body-sm text-body-sm text-surface font-medium flex items-center gap-1.5 mt-0.5"><span class="w-2 h-2 rounded-full bg-badge-olive"></span>Toko Beroperasi</span></div><span class="material-symbols-outlined text-outline-variant text-[18px]">storefront</span></div></div></aside><div class="pl-[260px]"><header class="fixed top-0 left-[260px] right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-md z-40 px-space-lg shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between"><div class="flex items-center gap-space-lg flex-1 max-w-xl"><div class="relative w-full max-w-sm"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span><input class="w-full pl-9 pr-space-md py-1.5 rounded-full bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm focus:outline-none focus:bg-surface-container-lowest transition-colors" placeholder="Cari pesanan, SKU, atau nama pelanggan..." type="text"/></div><div class="hidden lg:flex items-center gap-2 px-space-md py-1 rounded-full bg-surface-container-low"><span class="w-2 h-2 rounded-full bg-badge-olive"></span><span class="font-label-md text-label-md text-on-surface-variant uppercase">Butik Flagship Jakarta • Live</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined text-[16px]">calendar_today</span><span class="font-body-sm text-body-sm">Hari ini, 24 Mei 2024</span><span class="material-symbols-outlined text-[16px]">expand_more</span></div><div class="relative flex items-center justify-center p-2 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low cursor-pointer transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary"></span></div><div class="h-6 w-[1px] bg-surface-container-high"></div><div class="flex items-center gap-3 pl-1"><div class="flex flex-col text-right hidden sm:flex"><span class="font-title-sm text-title-sm text-on-surface leading-tight">Aditya R.</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-tight">Head of Operations</span></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-bg-base min-h-screen px-space-lg py-space-xl"><div class="flex flex-col w-full space-y-space-lg">
+<!-- Top Header Area -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md uppercase tracking-widest text-ink-muted">MANAJEMEN TRANSAKSI &amp; PENGIRIMAN</span>
+<h1 class="font-headline-lg text-headline-lg text-ink-primary tracking-tight mt-0.5">Daftar Pesanan</h1>
+<p class="font-body-md text-body-md text-ink-secondary mt-1">Kelola, verifikasi pembayaran, proses pengemasan, dan cetak dokumen pengiriman batch atelier.</p>
+</div>
+<!-- Top Action CTA Buttons -->
+<div class="flex items-center gap-3 self-start lg:self-auto shrink-0">
+<button class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-full bg-surface-container-lowest text-ink-primary shadow-sm hover:bg-surface-container-low transition-colors font-title-sm text-body-md">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Ekspor Data CSV / Excel</span>
+</button>
+<button class="inline-flex items-center gap-2 px-space-lg py-2.5 rounded-full bg-primary-container text-on-primary shadow-md hover:opacity-95 transition-all font-title-sm text-body-md">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Buat Pesanan Manual</span>
+</button>
+</div>
+</div>
+<!-- Status Tabs Bar -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1.5 scrollbar-none">
+<button class="flex items-center gap-2 px-space-md py-2 rounded-full bg-primary-container text-on-primary font-title-sm text-body-sm shrink-0 shadow-sm">
+<span>Semua</span>
+<span class="px-2 py-0.5 rounded-full bg-surface/20 text-on-primary font-label-sm text-label-sm">128</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shrink-0 hover:bg-surface-container transition-colors shadow-sm">
+<span>Menunggu Bayar</span>
+<span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 font-label-sm text-label-sm">8</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shrink-0 hover:bg-surface-container transition-colors shadow-sm">
+<span>Dibayar</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-900 font-label-sm text-label-sm">15</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shrink-0 hover:bg-surface-container transition-colors shadow-sm">
+<span>Diproses / QC &amp; Packing</span>
+<span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-900 font-label-sm text-label-sm">12</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shrink-0 hover:bg-surface-container transition-colors shadow-sm">
+<span>Dikirim / In Transit</span>
+<span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-900 font-label-sm text-label-sm">34</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shrink-0 hover:bg-surface-container transition-colors shadow-sm">
+<span>Selesai</span>
+<span class="px-2 py-0.5 rounded-full bg-green-100 text-green-900 font-label-sm text-label-sm">52</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shrink-0 hover:bg-surface-container transition-colors shadow-sm">
+<span>Dibatalkan</span>
+<span class="px-2 py-0.5 rounded-full bg-rose-100 text-rose-900 font-label-sm text-label-sm">4</span>
+</button>
+<button class="flex items-center gap-2 px-space-md py-2 rounded-full bg-surface-container-lowest text-ink-primary font-title-sm text-body-sm shrink-0 hover:bg-surface-container transition-colors shadow-sm">
+<span>Retur / Klaim</span>
+<span class="px-2 py-0.5 rounded-full bg-orange-100 text-orange-900 font-label-sm text-label-sm">3</span>
+</button>
+</div>
+<!-- Filters & Search Toolbar Card -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm space-y-space-md">
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-space-sm">
+<!-- Search input -->
+<div class="xl:col-span-4 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-ink-muted text-[18px]">search</span>
+<input class="w-full pl-9 pr-3 py-2 rounded-lg bg-surface-container-low text-ink-primary placeholder:text-ink-muted font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-colors" placeholder="Cari ID Pesanan (#SLH-...), nama pelanggan, atau no. resi..." type="text"/>
+</div>
+<!-- Date Range Dropdown -->
+<div class="xl:col-span-3 relative">
+<div class="flex items-center justify-between w-full px-3 py-2 rounded-lg bg-surface-container-low text-ink-primary cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-2 min-w-0">
+<span class="material-symbols-outlined text-ink-muted text-[18px] shrink-0">calendar_today</span>
+<span class="font-body-sm text-body-sm truncate">1 Mei 2024 - 24 Mei 2024</span>
+</div>
+<span class="material-symbols-outlined text-ink-muted text-[16px] shrink-0">expand_more</span>
+</div>
+</div>
+<!-- Courier Dropdown -->
+<div class="xl:col-span-2 relative">
+<div class="flex items-center justify-between w-full px-3 py-2 rounded-lg bg-surface-container-low text-ink-primary cursor-pointer hover:bg-surface-container transition-colors">
+<span class="font-body-sm text-body-sm truncate">Semua Kurir</span>
+<span class="material-symbols-outlined text-ink-muted text-[16px] shrink-0">expand_more</span>
+</div>
+</div>
+<!-- Payment Method Dropdown -->
+<div class="xl:col-span-3 relative">
+<div class="flex items-center justify-between w-full px-3 py-2 rounded-lg bg-surface-container-low text-ink-primary cursor-pointer hover:bg-surface-container transition-colors">
+<span class="font-body-sm text-body-sm truncate">Semua Pembayaran</span>
+<span class="material-symbols-outlined text-ink-muted text-[16px] shrink-0">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Second Filter Row & Filter Buttons -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-2">
+<div class="flex items-center gap-space-sm flex-wrap">
+<div class="flex items-center justify-between gap-3 px-3 py-1.5 rounded-lg bg-surface-container-low text-ink-primary cursor-pointer hover:bg-surface-container transition-colors min-w-[200px]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ink-muted text-[16px]">storefront</span>
+<span class="font-body-sm text-body-sm">Semua Gudang / Butik</span>
+</div>
+<span class="material-symbols-outlined text-ink-muted text-[16px]">expand_more</span>
+</div>
+<span class="font-label-sm text-label-sm text-ink-muted">Tersaring: 128 pesanan aktif</span>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-auto">
+<button class="px-space-md py-1.5 rounded-lg text-ink-muted hover:text-ink-primary font-title-sm text-body-sm transition-colors">Reset Filter</button>
+<button class="px-space-md py-1.5 rounded-lg bg-primary-container text-on-primary font-title-sm text-body-sm hover:opacity-90 transition-opacity">Terapkan Filter</button>
+</div>
+</div>
+</div>
+<!-- Floating / Sticky Bulk Actions Bar -->
+<div class="sticky top-20 z-30 bg-primary-container text-surface-container-lowest rounded-xl p-space-sm px-space-md shadow-xl flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 rounded bg-secondary flex items-center justify-center text-on-secondary shrink-0">
+<span class="material-symbols-outlined text-[16px]">check</span>
+</div>
+<span class="font-title-sm text-body-sm text-surface font-medium">
+<strong class="text-secondary-fixed">3</strong> pesanan terpilih dari 128
+      </span>
+</div>
+<div class="flex items-center gap-2 flex-wrap">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface/10 hover:bg-surface/20 text-surface font-title-sm text-body-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">print</span>
+<span>Cetak Label Pengiriman</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface/10 hover:bg-surface/20 text-surface font-title-sm text-body-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+<span>Cetak Invoice</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary hover:bg-accent-hover text-on-secondary font-title-sm text-body-sm transition-colors shadow-sm">
+<span>Ubah Status Massal</span>
+<span class="material-symbols-outlined text-[14px]">arrow_drop_down</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface/10 hover:bg-surface/20 text-surface font-title-sm text-body-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]">ios_share</span>
+<span>Ekspor Terpilih</span>
+</button>
+<div class="h-4 w-[1px] bg-surface/20 mx-1"></div>
+<button class="text-outline-variant hover:text-surface font-title-sm text-body-sm underline transition-colors">Batal Pilihan</button>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse min-w-[1100px]">
+<thead>
+<tr class="bg-surface-container-low text-ink-muted font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3 px-4 w-12 text-center">
+<input checked="" class="w-4 h-4 rounded accent-secondary cursor-pointer" type="checkbox"/>
+</th>
+<th class="py-3 px-4">Order ID &amp; Waktu</th>
+<th class="py-3 px-4">Pelanggan &amp; Kontak</th>
+<th class="py-3 px-4">Item Sepatu</th>
+<th class="py-3 px-4 text-right">Total Tagihan</th>
+<th class="py-3 px-4">Pembayaran</th>
+<th class="py-3 px-4">Status Pesanan</th>
+<th class="py-3 px-4">Kurir &amp; Resi</th>
+<th class="py-3 px-4 text-center">Aksi</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-ink-primary">
+<!-- Row 1 (Selected) -->
+<tr class="bg-secondary-fixed/15 hover:bg-secondary-fixed/25 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input checked="" class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88491</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">24 Mei 2024, 14:20 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Jakarta</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Aditya Pratama</span>
+<span class="text-ink-muted">Jakarta Selatan</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0812-3456-7890</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col space-y-2">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Close up artisanal leather sneaker in warm ochre colorway crafted with premium Italian leather on pristine minimal sand pedestal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhl9Z-LyfqGSoJy1HvZZu5zN8dZhMO7ihyjhFOes_PSJhvXV2wsQgVX4i6yABzjY3A5EcVfTYFR3bEI21doffTCqUZ5JImqadyJGblU1_t50n4eZJvpV5H23HE60ZC-d1PBFlHKi-tvruA3tcuEDFqb_jdPTZj83-1vQnBATKfPF4iD9d_EUcUSXYE-Yqu7HTbIj_D4xdAxn4YlgDtPBTlk7GWRswLxkmQ85cU7bVl"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Artisan Grand Sneaker V.1</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 41 • Ochre • 1x</span>
+</div>
+</div>
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Studio footwear product shot of men's dark espresso suede penny loafers resting on clean studio background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI7WERbeBmAS8c40rA0JuSq-PRvYvN4faCvOYEC5WnA4J1R2xO1BArnoU_cVoE2zjF__R_ByX9MzC6qCBv1DRYk0wDPVHpNPm-vZOdaCG9hcAiyfLGa-7pM1k9KLav8g6hcoQcg-cZYcuH0UAopQY8EmBtv0sg6Le90psb_skuHIYhyb7kXqufXaOKYBAfB8CZV5GvQWQDURwERyfcx6dIO8i1khRpfXo66guz3PP3"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Vagabond Suede Loafer</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 42 • Espresso • 1x</span>
+</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 2.561.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">2 Pasang Sepatu</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">BCA VA</span>
+<span class="text-emerald-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Lunas
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-100 text-purple-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                Dikirim
+              </div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">J&amp;T Express</span>
+<span class="text-ink-secondary font-mono text-[11px] underline cursor-pointer mt-0.5">JP8829401928</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<div class="flex items-center justify-center gap-1 text-ink-muted">
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors" title="Cetak Label">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors" title="Cetak Invoice">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors" title="Opsi Lain">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 (Selected) -->
+<tr class="bg-secondary-fixed/15 hover:bg-secondary-fixed/25 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input checked="" class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88492</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">24 Mei 2024, 13:55 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Surabaya</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Farhan Maulana</span>
+<span class="text-ink-muted">Surabaya</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0813-9876-5432</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Classic handmade British Oxford brogue shoes in rich tan calfskin leather with polished toe cap on neutral backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsM13ItW56WKGPt56UD86ioCt-Wdf7R7dlldRTXzY_PWsfncadDB0ygNHpqVRwGnJVBNXQXPY7GrZa4AMH1T7F5AVpIlaRfsgMG5mWO2tInL7lWycMzMnhH33pbZRSGv_ClL7ZNCkhIzQQHocO5Z-1ChxK4SffHGHzTmyAodjc23-tmM_jWf3UceIkgkqywfprVekWVeWkVpyDKxHBKloObYSzvQrD__MSsMEgSN2y"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Oxford Classic Tan Brogue</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 43 • Tan Calfskin • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 1.850.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">QRIS</span>
+<span class="text-emerald-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Lunas
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 text-blue-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                Diproses (QC)
+              </div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">J&amp;T Cargo</span>
+<span class="text-ink-muted font-label-sm text-label-sm">Menunggu Pick-up</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<div class="flex items-center justify-center gap-1 text-ink-muted">
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors" title="Cetak Label">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors" title="Update Status">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 (Selected) -->
+<tr class="bg-secondary-fixed/15 hover:bg-secondary-fixed/25 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input checked="" class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88493</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">24 Mei 2024, 13:12 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Bandung</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Clarissa Devi</span>
+<span class="text-ink-muted">Bandung</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0811-2233-4455</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Refined Italian suede slip-on driving loafer in taupe espresso tones photographed on clean architectural marble surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWr0sgA_AkhPmNWPPT7SKUgIb033sauINCiIegWsETpksdMEZwImaw5oh3Qx-mXcDdkVgfqFEPN1sWnvL3UvOxPc0IvEMU3Um0oSjKFf1e4UsG8_9zk28NeBKXJsAkSapPkQ8i70HnTyWIBLLRa8sjcRkl6b5FumpfR0wtnwgU4nOHSg4u3Q-NjS8GJarH_30eB7CAU1HxQsvVcFazfem0zOr_pOVPH44GTRldctf3"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Vagabond Suede Loafer</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 39 • Espresso Taupe • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 1.350.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">Mandiri VA</span>
+<span class="text-emerald-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Lunas
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 text-blue-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                Siap Pick-up
+              </div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">JNE YES</span>
+<span class="text-ink-muted font-label-sm text-label-sm">Manifest #9921</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<div class="flex items-center justify-center gap-1 text-ink-muted">
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors" title="Cetak Label">
+<span class="material-symbols-outlined text-[18px]">print</span>
+</button>
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors" title="Update Status">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88494</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">24 Mei 2024, 12:30 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Jakarta</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Reza Hidayat</span>
+<span class="text-ink-muted">Tangerang</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0857-1122-3344</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Rugged heritage moc-toe boots in thick brown Horween chromexcel pull-up leather, brass eyelets, vibram sole." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBJCtvp_Vqg_1LoTX_5dSxhuOt8N-oh9p66-DZb72GH908dpo1EOV4WfvlibZtIW8eb_Ek5l_OR-vD9OSDxHOxf5UVVNz7CoooeodSDKCMMTdEgunED-zKrGhzGIQ0djrQ4grv1-oN8U8rKT24XokkjAVP52lyKAZKmLzJlAX8z5ikDLgZZ21OVJGKrtNg2SKNT2f-tMWxFWFBgRONZIoShH7BJ1xrJ_3TbKWwiC_e"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Heritage Moc Toe Boot</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 42 • Horween Leather • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 2.150.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">BCA VA</span>
+<span class="text-emerald-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Lunas
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                Dibayar
+              </div>
+<span class="block text-[11px] text-ink-muted mt-0.5">Alokasi Pengrajin</span>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">J&amp;T Reguler</span>
+<span class="text-ink-muted font-label-sm text-label-sm">Belum ada resi</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<button class="px-2.5 py-1 rounded-md bg-secondary text-on-secondary font-title-sm text-label-sm hover:bg-accent-hover transition-colors">
+                Proses Pesanan
+              </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88495</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">24 Mei 2024, 11:05 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Jakarta</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Nadia Salsabila</span>
+<span class="text-ink-muted">Semarang</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0819-8765-4321</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Monochromatic clean white leather minimalist low-top luxury sneaker resting against warm ivory architectural background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb93A3LJo6cPVlmYKOStPhN0WBWzyAnOwTDtm00c0nNCDsKNqW5CEUBq8GtO70FlGocle-39XkagAZvLMPDRGp0S9J5d_qNIZnb7V1Jkcxn7nEOD9bVPyINUr5rj7fzyIZA_x3hF3cIeLkpxhkRJTLhKshU5q4HBKPF5GZY1Bk27_K_4lGWhty_tM0v8XgJGzlg_rj2VX96vj30mHKdQAY-vyvysdY04cZfDlQAGrK"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Aero Minimal Trainer Putih</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 38 • Nappa White • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 1.250.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">GoPay</span>
+<span class="text-emerald-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Lunas
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-100 text-purple-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+                Dikirim
+              </div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">SiCepat BEST</span>
+<span class="text-ink-secondary font-mono text-[11px] underline cursor-pointer mt-0.5">00418291039</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-ink-primary font-title-sm text-label-sm hover:bg-surface-container-high transition-colors">
+                Lacak Kurir
+              </button>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88496</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">24 Mei 2024, 10:48 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Butik Flagship</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Budi Wicaksono</span>
+<span class="text-ink-muted">Bekasi</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0812-4455-6677</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Artisanal luxury leather low sneaker handcrafted in warm ochre tan leather with stitched sole edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA03lhbP7EBUi4eWzirQWPFcqtaYYrDVgiUNuuB73oJ7gLF0dgYidb2Uk6pPjxceiT42VCVjuQ9VQtvfERUDkUSFNsVSRDQ59uxqJg926PdcHRiYPQqUdMBC8QCMcPU-7h2bXkb8rJvRNYolra1MgYndkEEH_-zQqPdnDZEgtN5WIIs9rRDHtWNSUmnzjqAcj6aEczFVhJdfsWVaMxpT57m3nbfvpp7kAAI3q_NG-u"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Artisan Grand Sneaker V.1</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 44 • Ochre Tan • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 1.490.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">COD</span>
+<span class="text-amber-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>Bayar di Tempat
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 text-blue-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+                Diproses
+              </div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">Lalamove Instan</span>
+<span class="text-ink-muted font-label-sm text-label-sm">Driver Assigned</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors text-ink-muted">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88497</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">24 Mei 2024, 09:15 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Jakarta</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Maya Anggraini</span>
+<span class="text-ink-muted">Jakarta Pusat</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0818-0987-1234</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Burnished dark brown leather derby shoe with wingtip brogue patterns on soft natural stone background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe_NnDtLIzob0wmN9bOS13iinHLrbkGcjAD4cgvAF4on94GJ2mLGNa24WKcH1zbp4yC8zAydwIR8RUHDNjD4AUUgYBsHjvZk_dbVEhXPdGnpa9h7ZFbuz4YTfeLubcp8v10-adCGun81TXyJ8AXgoJaFeUDGf3Yl8e9xnA3U5u_BIYsJrlGHIVsc96PPU4f2pJHElTKvio1PwUKCJ2u2w18NZM6u75wJU6VlrdgNM2"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Derby Brogue Espresso</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 37 • Burnished Brown • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 1.615.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">BCA VA</span>
+<span class="text-amber-800 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Belum Bayar
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                Menunggu Bayar
+              </div>
+<span class="block text-[11px] text-error font-medium mt-0.5">Sisa 1 jam 45 mnt</span>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">SiCepat</span>
+<span class="text-ink-muted font-label-sm text-label-sm">-</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-800 border border-emerald-200 font-title-sm text-label-sm hover:bg-emerald-100 transition-colors">
+<span class="material-symbols-outlined text-[14px]">chat</span>
+<span>Ingatkan WA</span>
+</button>
+</td>
+</tr>
+<!-- Row 8 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88489</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">23 Mei 2024, 17:40 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Medan</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Hendra Wijaya</span>
+<span class="text-ink-muted">Medan</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0821-3344-5566</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Olive green nubuck leather chelsea boot featuring elastic side gore and stacked leather heel in soft warm studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwCrN4cRaSGiBczxDzXzsz2Ulzj1yNluKOTeRg4TNRIhLfwXMKnfHoRtZjc0F-iTLCpJDaBay8vCFmycIkX45md_Kwl2aLcN80qpJsxKTqUHQd0AdsR9iW0X35hIrMUrA1ggGDs0JwroeUsLc5Lp8M8RccqI6MUmDiN3ukRz5X-jr-U4KNOH5TnprDyw8e9v-GZMkazFGdezeL-rIU5BaFLMX5eoub6MpFP3Qn4g23"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Chelsea Boot Olive Nubuck</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 43 • Olive • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 1.950.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">Kartu Kredit</span>
+<span class="text-emerald-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>Lunas
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-100 text-green-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-green-600"></span>
+                Selesai
+              </div>
+<span class="block text-[11px] text-ink-muted mt-0.5">Diterima 24 Mei</span>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">J&amp;T Cargo</span>
+<span class="text-ink-secondary font-mono text-[11px]">88192301912</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors text-ink-muted" title="Lihat Ulasan">
+<span class="material-symbols-outlined text-[18px]">rate_review</span>
+</button>
+</td>
+</tr>
+<!-- Row 9 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88480</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">23 Mei 2024, 14:10 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Yogyakarta</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Dimas Setiawan</span>
+<span class="text-ink-muted">Yogyakarta</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0852-7788-9900</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Refined contemporary running shoe in earthy taupe suede and natural canvas on structured warm background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDacbW9e9ZvVsOODxFwgkJ59ABB3bwaa03k_dHcFDjv1PMzYBlgMN1yEiGPVFbcURclqZwZEVrwpF3wrtn2FPYogl3vqXkgfG7FcKQOhslqr0_KD1uzCx7t177cNootH4qTGvAsQUdw_MEyh2wRrdeO8ZeNYKtt9G2ndV1Twkr1h3NnCQolndy9ITE26PSvw8Lw2QnXfKqR1RAgbMYppDs9PsMGwxst8pa6pQuc3dA0"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Urban Runner Taupe</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 42 • Taupe Earth • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 1.390.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">QRIS</span>
+<span class="text-orange-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span>Refunded
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-orange-100 text-orange-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-orange-600"></span>
+                Retur
+              </div>
+<span class="block text-[11px] text-ink-muted mt-0.5">Tukar Size EU 43</span>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary">J&amp;T Reguler</span>
+<span class="text-ink-secondary font-mono text-[11px]">RET-9921002</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<button class="px-2.5 py-1 rounded-md bg-surface-container text-ink-primary font-title-sm text-label-sm hover:bg-surface-container-high transition-colors">
+                Detail Retur
+              </button>
+</td>
+</tr>
+<!-- Row 10 -->
+<tr class="hover:bg-surface-container-low/70 transition-colors">
+<td class="py-3.5 px-4 text-center align-top">
+<input class="w-4 h-4 rounded accent-secondary cursor-pointer mt-1" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tracking-tight">#SLH-2025-88475</span>
+<span class="text-ink-muted text-label-sm font-label-sm mt-0.5">22 Mei 2024, 16:30 WIB</span>
+<span class="inline-block mt-1 text-[10px] font-label-sm text-badge-olive uppercase tracking-wider">Atelier Jakarta</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm text-ink-primary font-medium">Kevin Sanjaya</span>
+<span class="text-ink-muted">Jakarta Barat</span>
+<span class="text-ink-muted font-mono text-[11px] mt-0.5">0813-1122-3300</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-lg object-cover bg-surface-container shrink-0" data-alt="Artisanal leather sneaker in warm ochre colorway crafted with premium Italian leather on minimal pedestal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFEDCQgKMTvLvAxeKKv6Udcj7itoSZZlrfJIFI2FwKyDP5dyCGTsCu-m_OO3ret-Ikti-_KebyAK4_BoPzJL4cX_8hRMEz2zREFiO1v3GRV6skvsS3by-k9CqQc_RkCMNTo-WLFZf5i2BzaVx5slPNVpeKi0n8QNtZe0lm5fEX7m_XXfk-v1rWPO2vQaUEx9KZW4-1jEE3NC_jnvmRdC--jnoXH-n-UDJmp1y-wt2a"/>
+<div class="flex flex-col">
+<span class="font-title-sm text-body-sm leading-tight text-ink-primary">Artisan Sneaker V.1</span>
+<span class="text-ink-muted font-label-sm text-label-sm">EU 41 • Ochre • 1x</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right align-top">
+<div class="flex flex-col">
+<span class="font-title-sm text-body-md text-ink-primary font-semibold tabular-nums">Rp 1.490.000</span>
+<span class="text-ink-muted text-label-sm font-label-sm">1 Pasang</span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col items-start gap-1">
+<span class="px-2 py-0.5 rounded bg-surface-container text-ink-primary font-label-md text-label-sm font-semibold">BCA VA</span>
+<span class="text-rose-700 font-label-sm text-label-sm font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>Kadaluarsa
+                </span>
+</div>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-rose-100 text-rose-900 font-label-md text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-600"></span>
+                Dibatalkan
+              </div>
+<span class="block text-[11px] text-ink-muted mt-0.5">Waktu habis</span>
+</td>
+<td class="py-3.5 px-4 align-top">
+<div class="flex flex-col">
+<span class="text-ink-muted font-label-sm text-label-sm">-</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center align-top">
+<button class="p-1 hover:text-ink-primary hover:bg-surface-container rounded transition-colors text-ink-muted" title="Arsipkan">
+<span class="material-symbols-outlined text-[18px]">archive</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination & Footer Controls -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-md p-space-md bg-surface-container-low font-body-sm text-body-sm text-ink-secondary">
+<div class="flex items-center gap-space-lg flex-wrap">
+<span>Menampilkan <strong class="text-ink-primary font-medium">1-10</strong> dari <strong class="text-ink-primary font-medium">128</strong> pesanan</span>
+<div class="flex items-center gap-1.5">
+<span class="text-ink-muted text-label-sm font-label-sm uppercase">Tampilkan:</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest text-ink-primary font-semibold shadow-xs cursor-pointer">10</span>
+<span class="px-2 py-0.5 rounded hover:bg-surface-container-lowest text-ink-muted hover:text-ink-primary cursor-pointer transition-colors">25</span>
+<span class="px-2 py-0.5 rounded hover:bg-surface-container-lowest text-ink-muted hover:text-ink-primary cursor-pointer transition-colors">50</span>
+<span class="px-2 py-0.5 rounded hover:bg-surface-container-lowest text-ink-muted hover:text-ink-primary cursor-pointer transition-colors">100</span>
+</div>
+</div>
+<div class="flex items-center gap-1 self-center sm:self-auto">
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-lowest text-ink-muted hover:text-ink-primary disabled:opacity-50 transition-colors shadow-xs" disabled="">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span>Sebelumnya</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-title-sm text-body-sm flex items-center justify-center font-semibold">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-ink-primary font-title-sm text-body-sm flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-ink-primary font-title-sm text-body-sm flex items-center justify-center transition-colors">3</button>
+<span class="px-1 text-ink-muted">...</span>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest hover:bg-surface-container text-ink-primary font-title-sm text-body-sm flex items-center justify-center transition-colors">13</button>
+<button class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-surface-container-lowest text-ink-primary hover:bg-surface-container transition-colors shadow-xs">
+<span>Selanjutnya</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

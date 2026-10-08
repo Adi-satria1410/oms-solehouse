@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <style>:root { --color-ink: #2f2622; --color-base: #f6f1ea; }</style>
+  <rect width="48" height="48" rx="24" fill="var(--color-ink)" />
+  <text x="24" y="35" text-anchor="middle" font-family="Georgia,serif" font-size="34" fill="var(--color-base)">S</text>
+</svg>
