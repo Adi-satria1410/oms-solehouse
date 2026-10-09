@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
-import { categoryLabel, products } from '../../data/products'
+import { categoryLabel } from '../../data/products'
+import { useProducts } from '../../hooks/useCart'
 import ProductGallery from '../../components/store/ProductGallery'
 import ProductPurchase from '../../components/store/ProductPurchase'
 import ProductCard from '../../components/store/ProductCard'
@@ -9,6 +10,7 @@ import Icon from '../../components/ui/Icon'
 import NotFoundPage from '../NotFoundPage'
 
 export default function ProductDetailPage() {
+  const products = useProducts()
   const { slug } = useParams()
   const product = products.find(item => item.slug === slug)
   if (!product) return <NotFoundPage />

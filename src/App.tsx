@@ -11,18 +11,23 @@ import LoginPage from './pages/admin/LoginPage'
 import NotFoundPage from './pages/NotFoundPage'
 import RouteEffects from './components/ui/RouteEffects'
 import { adminNavigation, helpPages } from './data/navigation'
+import CommerceProvider from './store/CommerceProvider'
+import CartPage from './pages/store/CartPage'
+import CheckoutPage from './pages/store/CheckoutPage'
+import OrderConfirmationPage from './pages/store/OrderConfirmationPage'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <CommerceProvider><BrowserRouter>
       <RouteEffects />
       <Routes>
         <Route element={<StoreLayout />}>
           <Route index element={<HomePage />} />
           <Route path="katalog" element={<CatalogPage />} />
           <Route path="produk/:slug" element={<ProductDetailPage />} />
-          <Route path="keranjang" element={<PlaceholderPage title="Keranjang Belanja" description="Pilihan sepatu Anda akan tersimpan di sini." icon="shopping_bag" action={{ to: '/katalog', label: 'Lihat katalog' }} />} />
-          <Route path="checkout" element={<PlaceholderPage title="Checkout" description="Alamat pengiriman dan ringkasan belanja akan tersedia di sini." icon="lock" />} />
+          <Route path="keranjang" element={<CartPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
+          <Route path="checkout/konfirmasi/:orderId" element={<OrderConfirmationPage />} />
           <Route path="lacak" element={<PlaceholderPage title="Lacak Pesanan" description="Ikuti perjalanan pesanan Anda, dari studio hingga tiba di rumah." icon="local_shipping" />} />
           <Route path="lacak/:orderId" element={<PlaceholderPage title="Lacak Pesanan" description="Riwayat perjalanan pesanan akan ditampilkan di sini." icon="local_shipping" />} />
           <Route path="wishlist" element={<WishlistPage />} />
@@ -42,6 +47,6 @@ export default function App() {
         </Route>
         <Route path="panduan-visual" element={<DesignSystemPage />} />
       </Routes>
-    </BrowserRouter>
+    </BrowserRouter></CommerceProvider>
   )
 }

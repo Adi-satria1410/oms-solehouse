@@ -1,5 +1,6 @@
 import { Link, useSearchParams } from 'react-router-dom'
-import { categories, products } from '../../data/products'
+import { categories } from '../../data/products'
+import { useProducts } from '../../hooks/useCart'
 import { formatRupiah } from '../../lib/format'
 import Icon from '../../components/ui/Icon'
 import Badge from '../../components/ui/Badge'
@@ -9,6 +10,7 @@ import TrustStrip from '../../components/store/TrustStrip'
 import Newsletter from '../../components/store/Newsletter'
 
 export default function HomePage() {
+  const products = useProducts()
   const [params, setParams] = useSearchParams()
   const selected = params.get('favorit') ?? 'semua'
   const favorites = products.filter(product => selected === 'semua' || product.category === selected).slice(0, 4)

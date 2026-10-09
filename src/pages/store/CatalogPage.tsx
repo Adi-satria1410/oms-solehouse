@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { categories, colors, products } from '../../data/products'
+import { categories, colors } from '../../data/products'
+import { useProducts } from '../../hooks/useCart'
 import { filterKeys, filterProducts, paginateProducts } from '../../lib/catalog'
 import ProductCard from '../../components/store/ProductCard'
 import FilterSidebar from '../../components/store/FilterSidebar'
@@ -13,6 +14,7 @@ const labels: Record<string, string> = { kategori: 'Kategori', koleksi: 'Koleksi
 const collectionTitles: Record<string, string> = { pria: 'Koleksi Pria', wanita: 'Koleksi Wanita', anak: 'Koleksi Anak' }
 
 export default function CatalogPage() {
+  const products = useProducts()
   const [params, setParams] = useSearchParams()
   const [filtersOpen, setFiltersOpen] = useState(false)
   const filtered = filterProducts(products, params)

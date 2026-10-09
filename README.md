@@ -2,11 +2,11 @@
 
 Toko sepatu artisan dan Order Management System (OMS), dibangun bertahap dengan React, TypeScript, Vite, Tailwind CSS v4, dan React Router.
 
-**Status: Fase 2 selesai pada 9 Oktober 2026.** Beranda, katalog dengan filter, dan detail produk sudah memakai data contoh serta foto lokal. Keranjang, checkout, login, dan pengelolaan pesanan mengikuti fase berikutnya di [design/TASKS.md](design/TASKS.md).
+**Status: Fase 3 selesai pada 9 Oktober 2026.** Pelanggan dapat memilih sepatu, memakai voucher, membuat pesanan, dan menyimulasikan pembayaran. Pelacakan, login, dan admin OMS mengikuti fase berikutnya di [design/TASKS.md](design/TASKS.md).
 
 ## Menjalankan
 
-Gunakan Node.js 22.12+ atau 24 LTS dan npm. Versi yang dipakai saat verifikasi: Node.js 24.15.0.
+Gunakan Node.js 24 LTS dan npm. Versi yang dipakai saat verifikasi: Node.js 24.15.0. Pengujian memakai dukungan TypeScript bawaan Node, tanpa library tambahan.
 
 ```sh
 npm install
@@ -22,6 +22,7 @@ npm run dev -- --port 5173 --strictPort
 ```sh
 npm run build
 npm run lint
+npm test
 npm run preview
 ```
 
@@ -53,6 +54,7 @@ Tautan untuk mencoba:
 | Katalog / koleksi | `/katalog`, `/katalog?koleksi=pria`, `/katalog?koleksi=wanita`, `/katalog?koleksi=anak`, `/katalog?sale=true` |
 | Detail produk contoh | `/produk/artisan-grand-sneaker-v1` |
 | Keranjang / checkout | `/keranjang`, `/checkout` |
+| Konfirmasi pembayaran demo | `/checkout/konfirmasi/:orderId` (nomor dibuat saat checkout) |
 | Pelacakan contoh | `/lacak`, `/lacak/SLH-2025-88491` |
 | Akun / favorit | `/akun`, `/wishlist` |
 | Halaman masuk admin | `/admin/login` |
@@ -62,7 +64,7 @@ Tautan untuk mencoba:
 | Menu admin tambahan | `/admin/pelanggan`, `/admin/pengiriman`, `/admin/retur`, `/admin/laporan`, `/admin/pengaturan`, `/admin/notifikasi` |
 | Panduan visual Fase 0 | `/panduan-visual` |
 
-Seluruh tautan bantuan di footer memiliki placeholder. URL yang tidak dikenal menampilkan 404 dengan tautan kembali ke toko/dashboard. Halaman admin masih berupa pratinjau terbuka; autentikasi dan proteksi rute dikerjakan pada Fase 5. Badge keranjang/pesanan bernilai 0 sampai data dan state tersedia. Pilihan butik/gudang tersimpan selama berpindah halaman admin, belum memfilter data atau tersimpan setelah refresh.
+Seluruh tautan bantuan di footer memiliki placeholder. URL yang tidak dikenal menampilkan 404 dengan tautan kembali ke toko/dashboard. Halaman admin masih berupa pratinjau terbuka; autentikasi dan proteksi rute dikerjakan pada Fase 5. Badge keranjang mengikuti jumlah pasang; badge pesanan admin masih 0. Pilihan butik/gudang tersimpan selama berpindah halaman admin, belum memfilter data atau tersimpan setelah refresh.
 
 Untuk deployment nanti, hosting perlu mengarahkan URL aplikasi ke `index.html` agar tautan langsung seperti `/admin/pesanan` dapat dibuka. Dev server Vite sudah mendukung hal ini.
 
@@ -90,11 +92,50 @@ Filter disimpan di URL agar bisa dibagikan atau dibuka ulang. Contoh:
 
 Pilihan lebih dari satu kategori/warna/ukuran/material menggunakan pemisah koma. Filter yang berbeda digabungkan; pilihan di dalam filter yang sama memakai salah satu nilai yang cocok. Mengganti filter mengembalikan pagination ke halaman pertama. Nomor halaman di luar rentang dibatasi ke halaman yang tersedia.
 
-Untuk memeriksa stok di detail Artisan Grand Sneaker, pilih warna Ochre & Tan Welt: EU 40 habis, EU 42 tersisa 2. Jumlah tidak dapat melebihi 2. Saat warna berubah, ukuran dan jumlah direset. Tombol **Tambah ke Keranjang** tetap nonaktif sampai Fase 3. Bar pembelian mobile menggantikan navigasi bawah pada detail agar keduanya tidak bertumpuk.
+Pada data awal detail Artisan Grand Sneaker, warna Ochre & Tan Welt: EU 40 habis, EU 42 tersisa 2. Jumlah tidak dapat melebihi stok. Saat warna berubah, ukuran dan jumlah direset. Sejak Fase 3, tombol **Tambah ke Keranjang** aktif setelah memilih ukuran yang tersedia, dengan memperhitungkan jumlah yang sudah ada di keranjang. Bar pembelian mobile menggantikan navigasi bawah pada detail agar keduanya tidak bertumpuk.
 
 WhatsApp menggunakan template sesuai permintaan pengguna. Isi `VITE_WHATSAPP_NUMBER` di `.env` dengan nomor internasional diawali `62` tanpa `+`, lalu restart Vite. Jika kosong, CTA tampil nonaktif dengan keterangan kontak segera tersedia; tidak ada nomor tujuan buatan. Contoh konfigurasi tersedia di `.env.example`.
 
 Buletin hanya memvalidasi alamat email untuk pratinjau; belum mengirim atau menyimpan pendaftaran. Ulasan/testimoni diberi label contoh. Foto, warna, harga, dan stok merupakan materi demonstrasi; beberapa varian memakai foto referensi model yang sama. Lihat [sumber gambar](public/images/SOURCES.md).
+
+## Keranjang dan checkout (Fase 3)
+
+`CommerceProvider` menyediakan state bersama lewat React Context; `hooks/useCart.ts` dipakai oleh detail, navbar, keranjang, dan checkout. Item unik berdasarkan produk, varian warna, dan ukuran. Menambah pilihan yang sama menggabungkan jumlah; ukuran atau warna berbeda menghasilkan baris tersendiri. Stok terbaru tersedia lewat `useProducts()` untuk beranda, katalog, detail, dan favorit.
+
+- `src/lib/commerce.ts`: perhitungan total, validasi alamat/stok, pembuatan pesanan, dan pembayaran simulasi. Harga produk disalin ke pesanan agar total pesanan tidak mengikuti perubahan keranjang.
+- `src/store/commerceStore.ts`: operasi tambah/ubah/hapus/kosongkan, voucher, kado, checkout, dan pembayaran. Keranjang serta pesanan disimpan dalam satu objek `solehouse:commerce:v1` di `localStorage`, dibungkus `try/catch`. Pesan peringatan muncul jika penyimpanan gagal; sesi tetap dapat digunakan.
+- `src/components/store/OrderSummary.tsx`: ringkasan bersama untuk keranjang, checkout, dan konfirmasi.
+- `src/pages/store/CheckoutPage.tsx`: validasi penerima, nomor Indonesia, email, provinsi/kota/kecamatan, kode pos 5 digit, alamat, dan catatan opsional. Ekspedisi dan bank memakai pilihan demo.
+- `src/pages/store/OrderConfirmationPage.tsx`: pesanan tersimpan dengan status `menunggu_bayar`; tombol **Simulasikan Pembayaran** mengubahnya ke `dibayar`. Tidak ada rekening tujuan, transfer, atau tagihan sungguhan.
+
+Aturan perhitungan:
+
+| Komponen | Aturan demo |
+|---|---|
+| Voucher `SOLEWELCOME` | Diskon 10% subtotal produk, dibulatkan ke Rupiah terdekat |
+| Kemasan kado | Tambahan Rp35.000 per pesanan; tidak ikut diskon |
+| J&T Reguler | Rp24.000; gratis jika subtotal setelah diskon minimal Rp750.000 |
+| SiCepat BEST / JNE YES | Tarif tetap Rp18.000 / Rp22.000 |
+| Biaya layanan | Rp5.000 per pesanan |
+| Total | Subtotal − diskon + kado + ongkir + biaya layanan |
+
+Cara mencoba:
+
+1. Pilih Artisan Grand Sneaker dan Vagabond Suede Loafer, masing-masing satu pasang dengan ukuran tersedia.
+2. Buka keranjang, ubah jumlah atau simpan ke favorit. Coba voucher salah, lalu `SOLEWELCOME`, serta pilihan kado.
+3. Dengan harga data saat ini (Rp1.490.000 + Rp1.290.000), tanpa kado dan memakai J&T Reguler, total setelah voucher adalah **Rp2.507.000**. Contoh nominal desain Rp2.840.000 menghasilkan **Rp2.561.000** dan diperiksa dalam unit test.
+4. Lanjut ke checkout, isi alamat contoh, pilih ekspedisi dan bank, lalu **Bayar Sekarang**. Keranjang dikosongkan setelah pesanan tercipta.
+5. Di `/checkout/konfirmasi/SLH-2025-xxxxx`, klik **Simulasikan Pembayaran**, kemudian buka kembali detail produk untuk melihat stok berkurang. Refresh halaman mempertahankan pesanan dan stoknya. Pesanan terakhir dapat dibuka kembali dari keranjang kosong.
+
+Stok dihitung dari pesanan yang sudah dibayar agar pembayaran ulang atau refresh tidak mengurangi stok dua kali. Stok diperiksa lagi saat checkout dan pembayaran; bila sudah habis karena pesanan lain dibayar lebih dulu, pembayaran ditolak dengan pesan jelas. Hitung mundur 15 menit hanya pengingat: tidak mereservasi stok atau membatalkan keranjang. Format ID memakai `SLH-2025-xxxxx` sesuai tugas, sedangkan waktu pesanan memakai waktu pembuatan sebenarnya.
+
+Data demo hanya tersimpan pada browser dan origin yang sama (`localhost` berbeda dari `127.0.0.1`). Perubahan tab lain disinkronkan melalui event penyimpanan, tetapi ini belum merupakan transaksi server untuk pembelian serentak lintas perangkat. Supabase dan transaksi stok sungguhan dijadwalkan pada Fase 7. Pelacakan dan pengelolaan admin belum aktif.
+
+## Hasil pemeriksaan Fase 3
+
+`npm run build`, `npm run lint`, dan seluruh 11 pengujian `npm test` lolos. Test memeriksa perhitungan, kombinasi item, stok, voucher, validasi, pembayaran berulang, persistensi, penyimpanan rusak/penuh, dan perubahan berurutan antar-tab.
+
+Chrome headless memverifikasi alur belanja sampai pembayaran pada lebar 390px, 768px, dan 1440px: 24 pemeriksaan layout tanpa overflow horizontal atau error konsol. Voucher/kado bertahan setelah refresh, validasi memfokuskan kolom salah, pilihan ekspedisi mengubah total, pembayaran mengubah stok, dan pindah ke favorit berfungsi. Screenshot keranjang, checkout, serta konfirmasi pembayaran diperiksa secara visual. Hasil QA lokal ada di `.verification/phase3-results.json` dan `phase3-*.png` (diabaikan Git).
 
 ## Hasil pemeriksaan Fase 2
 

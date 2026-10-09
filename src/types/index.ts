@@ -40,10 +40,21 @@ export type Order = {
   id: string
   createdAt: string
   customer: { name: string; phone: string; email: string; city: string }
-  items: { variantSku: string; size: number; qty: number; price: number }[]
-  payment: { method: string; paid: boolean }
+  items: OrderItem[]
+  payment: { method: string; paid: boolean; paidAt?: string }
   courier: string
   trackingNumber?: string
   status: OrderStatus
   total: number
+  address: ShippingAddress
+  summary: OrderTotals
+  voucher: string
+  gift: boolean
 }
+
+export type CartItem = { productId: string; variantId: string; size: number; qty: number }
+export type Cart = { items: CartItem[]; voucher: string; gift: boolean; startedAt: number | null }
+export type OrderItem = CartItem & { variantSku: string; name: string; colorName: string; image: string; slug: string; price: number }
+export type ShippingAddress = { name: string; phone: string; email: string; province: string; city: string; district: string; postalCode: string; street: string; note: string }
+export type OrderTotals = { count: number; subtotal: number; discount: number; gift: number; shipping: number; service: number; total: number }
+export type CommerceData = { version: 1; cart: Cart; orders: Order[] }

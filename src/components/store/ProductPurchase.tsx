@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import type { Product } from '../../types'
 import { categoryLabel, colors } from '../../data/products'
 import { formatRupiah } from '../../lib/format'
@@ -8,11 +8,14 @@ import Icon from '../ui/Icon'
 import Button from '../ui/Button'
 import SizeChips from './SizeChips'
 import SizeGuideModal from './SizeGuideModal'
+import { useCart } from '../../hooks/useCart'
 
 export default function ProductPurchase({ product }: { product: Product }) {
   const [params, setParams] = useSearchParams()
   const [quantity, setQuantity] = useState(1)
   const [guideOpen, setGuideOpen] = useState(false)
+  const [message, setMessage] = useState('')
+  const cart = useCart()
   const { ids, toggle } = useWishlist()
   const variant = product.variants.find(item => item.id === params.get('warna')) ?? product.variants[0]
   const candidateSize = Number(params.get('ukuran'))
@@ -20,10 +23,19 @@ export default function ProductPurchase({ product }: { product: Product }) {
   const stock = size ? variant.stock[size] : 0
   const qty = Math.min(quantity, stock || 1)
   const totalStock = Object.values(variant.stock).reduce((sum, amount) => sum + amount, 0)
+  const inCart = cart.items.find(item => item.productId === product.id && item.variantId === variant.id && item.size === size)?.qty ?? 0
+  const canAdd = Boolean(size && qty + inCart <= stock)
+  const add = () => {
+    if (!size) { setMessage('Pilih ukuran terlebih dahulu.'); return }
+    try { cart.addItem({ productId: product.id, variantId: variant.id, size, qty }); setMessage(`${qty} pasang ${product.name} EU ${size} ditambahkan ke keranjang.`) }
+    catch (error) { setMessage((error as Error).message) }
+  }
   const changeVariant = (id: string) => {
+    setMessage('')
     const next = new URLSearchParams(params); next.set('warna', id); next.delete('ukuran'); setQuantity(1); setParams(next, { preventScrollReset: true })
   }
   const changeSize = (value: number) => {
+    setMessage('')
     const next = new URLSearchParams(params); next.set('warna', variant.id); next.set('ukuran', String(value)); setQuantity(1); setParams(next, { preventScrollReset: true })
   }
   return <section aria-label="Pilihan produk">
@@ -36,9 +48,11 @@ export default function ProductPurchase({ product }: { product: Product }) {
     <SizeChips stock={variant.stock} selected={size} onSelect={changeSize} />
     <p role="status" className="mt-4 text-caption text-ink-2">{size ? stock < 3 ? `Stok tipis: sisa ${stock} pasang untuk EU ${size}.` : `Tersedia ${stock} pasang untuk EU ${size}.` : totalStock ? 'Pilih ukuran untuk melihat stok yang tersedia.' : 'Semua ukuran pada warna ini sedang habis.'}</p>
     <div className="mt-5 flex flex-wrap items-center gap-3"><span className="text-caption font-medium">Jumlah</span><div className="inline-flex items-center rounded-pill border border-line bg-surface"><button type="button" aria-label="Kurangi jumlah" disabled={!size || qty <= 1} onClick={() => setQuantity(qty - 1)} className="inline-flex size-11 items-center justify-center disabled:opacity-30"><Icon name="remove" size={18} /></button><output aria-label="Jumlah dipilih" className="min-w-8 text-center text-body-sm">{qty}</output><button type="button" aria-label="Tambah jumlah" disabled={!size || qty >= stock} onClick={() => setQuantity(qty + 1)} className="inline-flex size-11 items-center justify-center disabled:opacity-30"><Icon name="add" size={18} /></button></div><button type="button" aria-label={`Favorit ${product.name}`} aria-pressed={ids.includes(product.id)} onClick={() => toggle(product.id)} className="ml-auto inline-flex size-11 items-center justify-center rounded-full border border-line bg-surface"><Icon name="favorite" filled={ids.includes(product.id)} size={21} /></button></div>
-    <Button className="mt-5 w-full" disabled><Icon name="shopping_bag" size={20} />Tambah ke Keranjang</Button><p className="mt-3 text-center text-label text-ink-2">Pembelian segera tersedia.</p>
+    <Button className="mt-5 w-full" disabled={!canAdd} onClick={add}><Icon name="shopping_bag" size={20} />Tambah ke Keranjang</Button>
+    <p className="mt-3 text-center text-label text-ink-2">{!size ? 'Pilih ukuran untuk menambahkan ke keranjang.' : inCart ? `${inCart} pasang varian ini sudah di keranjang.${!canAdd ? ' Jumlah pilihan melebihi sisa yang dapat ditambahkan.' : ''}` : 'Pembelian demo · tanpa pembayaran sungguhan.'}</p>
+    {message && <div role="status" className="mt-4 rounded-xl border border-line bg-surface p-4 text-body-sm">{message}<Link to="/keranjang" className="mt-2 block min-h-11 content-center font-semibold underline">Lihat keranjang</Link></div>}
     <div className="fixed inset-x-0 bottom-0 z-30 flex items-center justify-between gap-3 border-t border-line bg-surface/95 px-5 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-md lg:hidden">
-      <div className="min-w-0"><p className="text-label text-ink-2">Total pilihan</p><p className="mt-1 text-body-sm font-semibold">{formatRupiah(product.price * qty)}</p><p className="mt-1 truncate text-[10px] text-ink-2">{size ? `EU ${size} · ${qty} pasang` : 'Pilih ukuran'} · {variant.colorName}</p></div><Button disabled size="sm">Segera tersedia</Button>
+      <div className="min-w-0"><p className="text-label text-ink-2">Total pilihan</p><p className="mt-1 text-body-sm font-semibold">{formatRupiah(product.price * qty)}</p><p className="mt-1 truncate text-[10px] text-ink-2">{size ? `EU ${size} · ${qty} pasang` : 'Pilih ukuran'} · {variant.colorName}</p></div><Button disabled={!canAdd} size="sm" onClick={add}>Tambah ke Keranjang</Button>
     </div>
     <SizeGuideModal open={guideOpen} onClose={() => setGuideOpen(false)} />
   </section>

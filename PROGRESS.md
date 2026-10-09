@@ -68,9 +68,33 @@ Selesai pada 9 Oktober 2026.
 - [x] Favorit setelah refresh, ukuran habis, batas jumlah, reset ukuran/kuantitas saat ganti warna, galeri/zoom, dan modal panduan ukuran lolos.
 - [x] Screenshot beranda, katalog, detail, filter mobile, dan panduan ukuran diperiksa secara visual.
 
+## Fase 3 — Keranjang dan checkout
+
+Selesai pada 9 Oktober 2026.
+
+- [x] React Context dan `hooks/useCart.ts` untuk tambah, ubah jumlah, hapus, dan kosongkan.
+- [x] Item unik berdasarkan produk + warna + ukuran; stok dan jumlah divalidasi.
+- [x] Persistensi keranjang/pesanan di `localStorage` dengan `try/catch` dan pesan bila penyimpanan gagal.
+- [x] Badge navbar dan navigasi bawah mengikuti jumlah pasang.
+- [x] Tombol tambah pada detail desktop/mobile aktif setelah ukuran tersedia dipilih.
+- [x] Halaman keranjang dengan SKU, warna, ukuran, jumlah, hapus, simpan ke favorit, dan kondisi kosong.
+- [x] Kado Rp35.000 per pesanan dan pengingat 15 menit yang bertahan setelah refresh.
+- [x] Voucher `SOLEWELCOME` diskon 10%, kode salah menampilkan pesan, serta hapus voucher.
+- [x] `OrderSummary` dipakai bersama pada keranjang, checkout, dan konfirmasi.
+- [x] Form alamat tervalidasi, J&T/SiCepat/JNE dengan tarif tetap, serta lima bank VA contoh.
+- [x] Pesanan `SLH-2025-xxxxx` dibuat berstatus `menunggu_bayar`; keranjang dikosongkan sesudahnya.
+- [x] Konfirmasi dan tombol simulasi pembayaran mengubah status ke `dibayar`.
+- [x] Stok dihitung dari pesanan dibayar; tidak berkurang dua kali setelah refresh/klik ulang.
+- [x] Stok terkini dipakai oleh seluruh storefront; stok tidak cukup menolak checkout/pembayaran.
+- [x] 11 pengujian logika lewat `npm test` lolos.
+- [x] Build produksi dan lint akhir lolos tanpa error.
+- [x] 24 pemeriksaan layout/interaksi browser pada 390px/768px/1440px tanpa overflow horizontal atau error konsol.
+- [x] Alur dua produk → voucher → checkout → konfirmasi → simulasi pembayaran → stok setelah refresh lolos.
+- [x] Screenshot keranjang, checkout, dan konfirmasi desktop/mobile diperiksa; README diperbarui.
+
 ## Keputusan
 
-- Mengikuti urutan fase; sesi ini menyelesaikan **Fase 2 — Storefront statis**, sebelum Fase 3 keranjang dan checkout.
+- Mengikuti urutan fase; sesi ini menyelesaikan **Fase 3 — Keranjang dan checkout**, sebelum Fase 4 pelacakan.
 - Checklist disimpan di sini karena `design/TASKS.md` meminta pencatatan progres tetapi juga melarang mengubah folder `design/`.
 - Token utama mengikuti `design/README.md` bagian 3, termasuk aksen terakota yang berbeda dari token YAML Stitch.
 - Struktur dua kolom, judul serif, kartu hangat, dan tombol pill mengikuti bahasa visual ekspor Stitch. Halaman uji fondasi tetap tersedia di `/panduan-visual`.
@@ -81,12 +105,18 @@ Selesai pada 9 Oktober 2026.
 - Tidak ada library tambahan untuk routing atau drawer. Drawer memakai `<dialog>` native dengan pengelolaan fokus keyboard.
 - Menu tambahan mendapatkan placeholder agar semua tautan berfungsi; fitur opsionalnya belum diimplementasikan.
 - Autentikasi admin belum tersedia sesuai urutan fase; `/admin/login` menyediakan tautan bertuliskan Pratinjau OMS, tanpa menyimulasikan proses login.
-- Badge bernilai 0, karena data keranjang/pesanan belum ada. Pemilih butik/gudang hanya menyimpan pilihan selama navigasi admin.
+- Badge keranjang mengikuti jumlah pasang sejak Fase 3; badge admin masih 0. Pemilih butik/gudang hanya menyimpan pilihan selama navigasi admin.
 - Fase 2 tidak menambah library. Foto diunduh dari acuan Stitch tanpa mengubah folder `design/`; asal gambar dicatat di `public/images/SOURCES.md`.
 - Foto varian bersifat referensi model; galeri lengkap tersedia untuk Artisan Grand Sneaker, model lain memakai foto yang tersedia di ekspor.
 - Testimoni/ulasan diberi label contoh. Form buletin hanya memvalidasi email, tanpa pengiriman/penyimpanan.
 - Pengguna memilih template WhatsApp; konfigurasi nomor kosong di `.env.example` dan CTA tetap nonaktif sampai nomor diisi.
+- Fase 3 memakai React Context tanpa dependensi baru. Test runner bawaan Node.js 24 menjalankan `tests/commerce.test.mjs`.
+- Keranjang/pesanan disimpan dalam satu objek versi 1. Stok diturunkan dari pesanan dibayar, dan divalidasi ulang sebelum checkout/pembayaran.
+- Tarif ekspedisi mengikuti contoh checkout: J&T Rp24.000 (gratis minimal Rp750.000 setelah diskon), SiCepat Rp18.000, JNE Rp22.000. Kado dan ongkir tidak ikut diskon.
+- Harga produk Fase 2 dipertahankan; contoh Artisan + Vagabond dengan voucher menghasilkan Rp2.507.000. Nominal desain Rp2.561.000 diuji memakai subtotal referensi Rp2.840.000.
+- Timer hanya pengingat sesuai TASKS Fase 3; tidak ada reservasi stok atau pembatalan otomatis. Pembayaran/ongkir sepenuhnya simulasi.
+- Format ID tetap `SLH-2025-xxxxx` sesuai tugas; waktu pembuatan memakai waktu sebenarnya. Konfirmasi tersedia di `/checkout/konfirmasi/:orderId`.
 
 ## Belum dikerjakan
 
-Fase 3–8 dan fitur opsional: keranjang, checkout simulasi, pelacakan, login/admin OMS, inventori, Supabase, serta deployment. Fase berikutnya adalah keranjang dan checkout.
+Fase 4–8 dan fitur opsional: pelacakan, login/admin OMS, inventori, Supabase, serta deployment. Berikutnya adalah Fase 4 — Lacak pesanan.
