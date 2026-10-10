@@ -50,7 +50,10 @@ export type Order = {
   summary: OrderTotals
   voucher: string
   gift: boolean
+  events?: OrderEvent[]
 }
+
+export type OrderEvent = { status: OrderStatus; at: string; note: string }
 
 export type CartItem = { productId: string; variantId: string; size: number; qty: number }
 export type Cart = { items: CartItem[]; voucher: string; gift: boolean; startedAt: number | null }

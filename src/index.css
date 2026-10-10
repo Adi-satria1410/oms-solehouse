@@ -134,3 +134,27 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+@media print {
+  @page { size: A4; margin: 14mm; }
+  body:has(.tracking-page) { background: var(--color-surface); color: var(--color-ink); }
+  body:has(.tracking-page) #root > div { display: block; padding: 0; min-height: 0; }
+  body:has(.tracking-page) #root > div > header,
+  body:has(.tracking-page) #root > div > footer,
+  body:has(.tracking-page) #root > div > nav,
+  body:has(.tracking-page) .skip-link,
+  body:has(.tracking-page) .no-print { display: none !important; }
+  body:has(.tracking-page) main { max-width: none; padding: 0; }
+  .tracking-page { max-width: none; }
+  .tracking-page > * { margin: 0 !important; }
+  .tracking-result { overflow: visible; box-shadow: none; border: 0; }
+  .tracking-result > header { padding: 0 0 5mm; background: transparent; }
+  .tracking-print-title { display: block; margin-bottom: 4mm; }
+  .tracking-columns { display: block; padding: 5mm 0 0; }
+  .tracking-columns > div { margin-top: 6mm; }
+  .tracking-step, .tracking-block { break-inside: avoid; }
+  .tracking-result h3 { break-after: avoid; }
+  .tracking-step { margin-top: 3mm; }
+  .tracking-step > div { padding-top: 1mm; padding-bottom: 1mm; }
+  .tracking-result a { color: inherit; text-decoration: none; }
+}

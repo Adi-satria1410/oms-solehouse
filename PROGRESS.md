@@ -92,9 +92,26 @@ Selesai pada 9 Oktober 2026.
 - [x] Alur dua produk → voucher → checkout → konfirmasi → simulasi pembayaran → stok setelah refresh lolos.
 - [x] Screenshot keranjang, checkout, dan konfirmasi desktop/mobile diperiksa; README diperbarui.
 
+## Fase 4 — Lacak pesanan
+
+Selesai pada 10 Oktober 2026.
+
+- [x] `TrackingTimeline` dengan lima tahapan, waktu WIB, keterangan, dan penanda tahap terkini.
+- [x] Form nomor pesanan dengan normalisasi, validasi, hasil kosong, dan pesan tidak ditemukan.
+- [x] `/lacak/:orderId` membaca pesanan Fase 3; tautan dari konfirmasi dan pesanan terbaru tersedia.
+- [x] Hasil menampilkan status, kurir, resi bila tersedia, item sepatu, total, dan alamat penerima.
+- [x] Salin resi dengan umpan balik berhasil/gagal serta petunjuk salin manual.
+- [x] WhatsApp template dipakai ulang; pesan akan menyertakan nomor pesanan saat nomor CS dikonfigurasi.
+- [x] Cetak Resi PDF lewat `window.print()` dan CSS A4 tanpa navigasi, pencarian, serta tombol.
+- [x] Riwayat peristiwa dibuat/dibayar tersimpan; data lama tetap terbaca tanpa migrasi wajib.
+- [x] Tahap mendatang tidak diberi waktu buatan; batal/retur memiliki keterangan khusus.
+- [x] 18 test logika, build, dan lint lolos.
+- [x] 18 pemeriksaan layout pada 390px/768px/1440px tanpa overflow horizontal atau error konsol.
+- [x] Screenshot layar serta PDF hasil cetak diperiksa secara visual; README diperbarui.
+
 ## Keputusan
 
-- Mengikuti urutan fase; sesi ini menyelesaikan **Fase 3 — Keranjang dan checkout**, sebelum Fase 4 pelacakan.
+- Mengikuti urutan fase; sesi ini menyelesaikan **Fase 4 — Lacak pesanan**, sebelum Fase 5 admin inti.
 - Checklist disimpan di sini karena `design/TASKS.md` meminta pencatatan progres tetapi juga melarang mengubah folder `design/`.
 - Token utama mengikuti `design/README.md` bagian 3, termasuk aksen terakota yang berbeda dari token YAML Stitch.
 - Struktur dua kolom, judul serif, kartu hangat, dan tombol pill mengikuti bahasa visual ekspor Stitch. Halaman uji fondasi tetap tersedia di `/panduan-visual`.
@@ -116,7 +133,11 @@ Selesai pada 9 Oktober 2026.
 - Harga produk Fase 2 dipertahankan; contoh Artisan + Vagabond dengan voucher menghasilkan Rp2.507.000. Nominal desain Rp2.561.000 diuji memakai subtotal referensi Rp2.840.000.
 - Timer hanya pengingat sesuai TASKS Fase 3; tidak ada reservasi stok atau pembatalan otomatis. Pembayaran/ongkir sepenuhnya simulasi.
 - Format ID tetap `SLH-2025-xxxxx` sesuai tugas; waktu pembuatan memakai waktu sebenarnya. Konfirmasi tersedia di `/checkout/konfirmasi/:orderId`.
+- Fase 4 tidak menambah dependensi. `Order.events` opsional mempertahankan kompatibilitas pesanan lama; fallback waktu berasal dari `createdAt` dan `payment.paidAt`.
+- Resi, kejadian pengiriman, dan waktu tiba tidak dikarang. Pembaruan admin/pengisian resi baru dikerjakan pada Fase 5; fixture pengiriman hanya ada di browser QA.
+- Pelacakan memakai nomor pesanan sesuai TASKS; tidak menambahkan autentikasi pelanggan atau pencarian berdasarkan nomor resi. Data hanya tersedia di browser/origin pembuatnya.
+- Cetak menghasilkan ringkasan demo A4 melalui dialog browser, bukan label kurir resmi. Pengujian clipboard menggunakan mock tanpa mengubah clipboard pengguna.
 
 ## Belum dikerjakan
 
-Fase 4–8 dan fitur opsional: pelacakan, login/admin OMS, inventori, Supabase, serta deployment. Berikutnya adalah Fase 4 — Lacak pesanan.
+Fase 5–8 dan fitur opsional: login/admin OMS, inventori, Supabase, serta deployment. Berikutnya adalah Fase 5 — Admin inti.

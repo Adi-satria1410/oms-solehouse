@@ -2,7 +2,7 @@
 
 Toko sepatu artisan dan Order Management System (OMS), dibangun bertahap dengan React, TypeScript, Vite, Tailwind CSS v4, dan React Router.
 
-**Status: Fase 3 selesai pada 9 Oktober 2026.** Pelanggan dapat memilih sepatu, memakai voucher, membuat pesanan, dan menyimulasikan pembayaran. Pelacakan, login, dan admin OMS mengikuti fase berikutnya di [design/TASKS.md](design/TASKS.md).
+**Status: Fase 4 selesai pada 10 Oktober 2026.** Pelanggan dapat berbelanja, menyimulasikan pembayaran, dan melacak pesanan yang tersimpan di browser. Login dan admin OMS mengikuti fase berikutnya di [design/TASKS.md](design/TASKS.md).
 
 ## Menjalankan
 
@@ -55,7 +55,7 @@ Tautan untuk mencoba:
 | Detail produk contoh | `/produk/artisan-grand-sneaker-v1` |
 | Keranjang / checkout | `/keranjang`, `/checkout` |
 | Konfirmasi pembayaran demo | `/checkout/konfirmasi/:orderId` (nomor dibuat saat checkout) |
-| Pelacakan contoh | `/lacak`, `/lacak/SLH-2025-88491` |
+| Pelacakan pesanan | `/lacak`, `/lacak/:orderId` (gunakan nomor dari checkout) |
 | Akun / favorit | `/akun`, `/wishlist` |
 | Halaman masuk admin | `/admin/login` |
 | Dashboard admin | `/admin` |
@@ -129,7 +129,25 @@ Cara mencoba:
 
 Stok dihitung dari pesanan yang sudah dibayar agar pembayaran ulang atau refresh tidak mengurangi stok dua kali. Stok diperiksa lagi saat checkout dan pembayaran; bila sudah habis karena pesanan lain dibayar lebih dulu, pembayaran ditolak dengan pesan jelas. Hitung mundur 15 menit hanya pengingat: tidak mereservasi stok atau membatalkan keranjang. Format ID memakai `SLH-2025-xxxxx` sesuai tugas, sedangkan waktu pesanan memakai waktu pembuatan sebenarnya.
 
-Data demo hanya tersimpan pada browser dan origin yang sama (`localhost` berbeda dari `127.0.0.1`). Perubahan tab lain disinkronkan melalui event penyimpanan, tetapi ini belum merupakan transaksi server untuk pembelian serentak lintas perangkat. Supabase dan transaksi stok sungguhan dijadwalkan pada Fase 7. Pelacakan dan pengelolaan admin belum aktif.
+Data demo hanya tersimpan pada browser dan origin yang sama (`localhost` berbeda dari `127.0.0.1`). Perubahan tab lain disinkronkan melalui event penyimpanan, tetapi ini belum merupakan transaksi server untuk pembelian serentak lintas perangkat. Supabase dan transaksi stok sungguhan dijadwalkan pada Fase 7. Pengelolaan admin belum aktif.
+
+## Pelacakan pesanan (Fase 4)
+
+Buka `/lacak` dan masukkan nomor dari konfirmasi checkout, atau klik **Lacak pesanan ini** pada konfirmasi. Tiga pesanan terbaru di browser tersedia sebagai tautan cepat. `/lacak/:orderId` dapat dibuka langsung dan tetap menampilkan hasil setelah refresh. Pencarian mengabaikan spasi awal/akhir dan huruf kecil; format salah serta nomor tidak ditemukan memiliki pesan tersendiri.
+
+- `src/pages/store/TrackOrderPage.tsx` membaca pesanan dari Context yang sama dengan checkout. Hasil berisi status, kurir, resi jika tersedia, daftar sepatu, total, dan alamat.
+- `src/components/store/TrackingTimeline.tsx` menampilkan Pesanan Dibuat → Dibayar → Dikemas (QC) → Dikirim → Diterima. `diproses` dan `siap_kirim` berada dalam tahap QC/pengemasan. Status batal atau retur memiliki keterangan khusus.
+- `src/lib/tracking.ts` mengolah tahapan dan riwayat waktu. `Order.events` bersifat opsional agar data Fase 3 tetap terbaca; `createdAt` dan `payment.paidAt` menjadi sumber waktu untuk pesanan lama. Pesanan baru mencatat peristiwa dibuat/dibayar. Waktu ditampilkan dalam WIB, dan waktu yang tidak tersedia tidak dibuat-buat.
+- **Salin nomor resi** tersedia jika pesanan memiliki resi; kegagalan clipboard memberi petunjuk salin manual. WhatsApp tetap memakai template tanpa nomor aktif; setelah `VITE_WHATSAPP_NUMBER` dikonfigurasi, pesan bantuan menyertakan nomor pesanan.
+- **Cetak Resi PDF** memanggil dialog cetak browser. Pilih **Simpan sebagai PDF**. Gaya A4 menyembunyikan navigasi, pencarian, tombol, dan bantuan; hasilnya ringkasan pengiriman demo, bukan label kurir resmi.
+
+Untuk mencoba: buat pesanan → buka pelacakan (Menunggu Bayar) → buka pembayaran dan simulasikan → kembali ke pelacakan (Dibayar). Pengemasan/pengiriman/diterima dan pengisian resi menunggu implementasi admin Fase 5. Tidak ada integrasi kurir, estimasi tiba buatan, atau perubahan status otomatis. Nomor contoh dalam desain tidak otomatis menjadi pesanan nyata.
+
+## Hasil pemeriksaan Fase 4
+
+Build dan lint lolos. Seluruh 18 test (`npm test`) mencakup regresi checkout, pencatatan peristiwa, kompatibilitas data lama, status batal/retur, dan waktu yang belum tersedia. Chrome memverifikasi 18 kondisi layout pada 390px/768px/1440px tanpa overflow horizontal atau error konsol, termasuk checkout → pelacakan → pembayaran, pencarian, tautan langsung, dan refresh.
+
+Status pengiriman/diterima/batal diuji memakai fixture hanya di profil QA terpisah. Clipboard diuji dengan mock berhasil/ditolak; tombol cetak diverifikasi memanggil `window.print()`, lalu PDF A4 dihasilkan melalui Chrome dan dirender untuk pemeriksaan visual. Hasil lokal: `.verification/phase4-results.json`, `phase4-*.png`, dan `phase4-tracking.pdf` (diabaikan Git).
 
 ## Hasil pemeriksaan Fase 3
 

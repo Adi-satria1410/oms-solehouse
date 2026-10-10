@@ -3,13 +3,17 @@ import type { CartItem, CommerceData, Order } from '../types'
 const object = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value)
 const strings = (value: Record<string, unknown>, keys: string[]) => keys.every(key => typeof value[key] === 'string')
 const integer = (value: unknown): value is number => Number.isSafeInteger(value) && Number(value) >= 0
+const statuses = ['menunggu_bayar', 'dibayar', 'diproses', 'siap_kirim', 'dikirim', 'selesai', 'dibatalkan', 'retur']
 const cartItem = (value: unknown): value is CartItem => object(value) && strings(value, ['productId', 'variantId']) && integer(value.size) && value.size >= 36 && value.size <= 46 && integer(value.qty) && value.qty > 0
 const orderValid = (value: unknown): value is Order => {
   if (!object(value) || !strings(value, ['id', 'createdAt', 'courier', 'voucher']) || !/^SLH-2025-\d{5}$/.test(String(value.id))) return false
   if (!object(value.customer) || !strings(value.customer, ['name', 'phone', 'email', 'city'])) return false
   if (!object(value.address) || !strings(value.address, ['name', 'phone', 'email', 'province', 'city', 'district', 'postalCode', 'street', 'note'])) return false
   if (!object(value.payment) || typeof value.payment.method !== 'string' || typeof value.payment.paid !== 'boolean') return false
-  if (!['menunggu_bayar', 'dibayar', 'diproses', 'siap_kirim', 'dikirim', 'selesai', 'dibatalkan', 'retur'].includes(String(value.status))) return false
+  if (!statuses.includes(String(value.status))) return false
+  if (value.trackingNumber !== undefined && typeof value.trackingNumber !== 'string') return false
+  if (value.payment.paidAt !== undefined && (typeof value.payment.paidAt !== 'string' || !Number.isFinite(Date.parse(value.payment.paidAt)))) return false
+  if (value.events !== undefined && (!Array.isArray(value.events) || !value.events.every(event => object(event) && strings(event, ['status', 'at', 'note']) && statuses.includes(String(event.status)) && Number.isFinite(Date.parse(String(event.at)))))) return false
   if (!integer(value.total) || typeof value.gift !== 'boolean' || !object(value.summary)) return false
   const summary = value.summary
   if (!['count', 'subtotal', 'discount', 'gift', 'shipping', 'service', 'total'].every(key => integer(summary[key]))) return false

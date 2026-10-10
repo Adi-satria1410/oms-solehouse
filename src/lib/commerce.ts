@@ -1,4 +1,5 @@
 import type { Cart, CartItem, CommerceData, Order, OrderItem, Product, ShippingAddress } from '../types'
+import { getOrderEvents } from './tracking.ts'
 
 export const VOUCHER = 'SOLEWELCOME'
 export const GIFT_PRICE = 35000
@@ -78,7 +79,8 @@ export function makeOrder(data: CommerceData, products: Product[], address: Ship
   const items = resolveItems(data.cart.items, products)
   const summary = calculateTotals(items, data.cart.voucher, data.cart.gift, courier.id)
   return { id, createdAt: now, customer: { name: address.name, phone: address.phone, email: address.email, city: address.city }, address: { ...address }, items,
-    payment: { method, paid: false }, courier: courier.name, status: 'menunggu_bayar', total: summary.total, summary, gift: data.cart.gift, voucher: data.cart.voucher }
+    payment: { method, paid: false }, courier: courier.name, status: 'menunggu_bayar', total: summary.total, summary, gift: data.cart.gift, voucher: data.cart.voucher,
+    events: [{ status: 'menunggu_bayar', at: now, note: 'Pesanan dibuat melalui storefront SOLEHOUSE.' }] }
 }
 
 export function payOrder(data: CommerceData, products: Product[], id: string, now: string): CommerceData {
@@ -87,5 +89,6 @@ export function payOrder(data: CommerceData, products: Product[], id: string, no
   if (order.payment.paid) return data
   if (order.status !== 'menunggu_bayar') throw new Error('Pesanan ini tidak dapat dibayar.')
   checkStock(order.items, availableProducts(products, data.orders))
-  return { ...data, orders: data.orders.map(item => item.id === id ? { ...item, status: 'dibayar', payment: { ...item.payment, paid: true, paidAt: now } } : item) }
+  return { ...data, orders: data.orders.map(item => item.id === id ? { ...item, status: 'dibayar', payment: { ...item.payment, paid: true, paidAt: now },
+    events: [...getOrderEvents(item), { status: 'dibayar', at: now, note: 'Pembayaran demo berhasil disimulasikan.' }] } : item) }
 }

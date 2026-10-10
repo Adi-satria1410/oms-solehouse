@@ -15,6 +15,7 @@ import CommerceProvider from './store/CommerceProvider'
 import CartPage from './pages/store/CartPage'
 import CheckoutPage from './pages/store/CheckoutPage'
 import OrderConfirmationPage from './pages/store/OrderConfirmationPage'
+import TrackOrderPage from './pages/store/TrackOrderPage'
 
 export default function App() {
   return (
@@ -28,8 +29,8 @@ export default function App() {
           <Route path="keranjang" element={<CartPage />} />
           <Route path="checkout" element={<CheckoutPage />} />
           <Route path="checkout/konfirmasi/:orderId" element={<OrderConfirmationPage />} />
-          <Route path="lacak" element={<PlaceholderPage title="Lacak Pesanan" description="Ikuti perjalanan pesanan Anda, dari studio hingga tiba di rumah." icon="local_shipping" />} />
-          <Route path="lacak/:orderId" element={<PlaceholderPage title="Lacak Pesanan" description="Riwayat perjalanan pesanan akan ditampilkan di sini." icon="local_shipping" />} />
+          <Route path="lacak" element={<TrackOrderPage />} />
+          <Route path="lacak/:orderId" element={<TrackOrderPage />} />
           <Route path="wishlist" element={<WishlistPage />} />
           <Route path="akun" element={<PlaceholderPage title="Akun Saya" description="Informasi akun dan riwayat belanja akan tersedia di sini." icon="person" />} />
           {helpPages.map(page => <Route key={page.path} path={page.path} element={<PlaceholderPage title={page.title} description="Informasi lengkap sedang disiapkan oleh tim SOLEHOUSE." icon="help" />} />)}
